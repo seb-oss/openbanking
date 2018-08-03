@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "64b3d946-1f7d-4d18-8419-321ef2b364c8",
+		"name": "Account Information",
+		"description": "Account information api information.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "793770ad-3b7b-4ef4-8732-0055f1996c4c",
+			"name": "accounts",
+			"item": [
+				{
+					"_postman_id": "81332d9a-1ea0-4755-9efd-afa87a382a40",
+					"name": "Returns a list of a user´s accounts.",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{PSU-IP-Address}}"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}"
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}"
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}"
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}"
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}"
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}"
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}"
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}"
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://sandbox.sebgroup.com/ais/v2/accounts?withBalance={{withBalance}}",
+							"protocol": "https",
+							"host": [
+								"sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v2",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "withBalance",
+									"value": "{{withBalance}}"
+								}
+							]
+						},
+						"description": "Listed accounts are those where the user is account holder and where the account type is PSD2 supported."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "0ac37642-1f39-4188-9e2f-3ddfd04d57e1",
+					"name": "Returns account information, potentially including balances for one specific account.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{PSU-IP-Address}}"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}"
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}"
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}"
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}"
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}"
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}"
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}"
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}"
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://sandbox.sebgroup.com/ais/v2/accounts/:accountId?withBalance={{withBalance}}",
+							"protocol": "https",
+							"host": [
+								"sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v2",
+								"accounts",
+								":accountId"
+							],
+							"query": [
+								{
+									"key": "withBalance",
+									"value": "{{withBalance}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "{{accountId}}"
+								}
+							]
+						},
+						"description": "Returns account information, with or without balances for one specific account. The accountId is found using the account list endpoint."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "253a105a-aabb-4836-8a52-ca11c69271f6",
+					"name": "Returns a list of transactions for one specific account. Unfiltered transaction lists are paginated. When filtering by date results are never paginated.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://sandbox.sebgroup.com/ais/v2/accounts/:accountId/transactions",
+							"protocol": "https",
+							"host": [
+								"sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v2",
+								"accounts",
+								":accountId",
+								"transactions"
+							]
+						},
+						"description": "Returns a list of transactions for one specific account. You can search on account with or without a date period. The response contains transaction ids that can be used to retrieve transaction details."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "47615bd0-3e0d-4e90-8219-94ae5ef5e104",
+					"name": "Returns transaction details on a specific transaction.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://sandbox.sebgroup.com/ais/v2/accounts/:accountId/transactions/:transactionId",
+							"protocol": "https",
+							"host": [
+								"sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v2",
+								"accounts",
+								":accountId",
+								"transactions",
+								":transactionId"
+							]
+						},
+						"description": "Depending on transaction type, different fields will be returned. Some types of transaction detail does not have any further details than shown in the original transactions list."
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for accounts"
+		}
+	]
+}
