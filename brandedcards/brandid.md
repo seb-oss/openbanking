@@ -1,7 +1,7 @@
 # Available Brand ID's for Branded Card Accounts
 
 The brandId parameter is required when calling the authorizationUrl from the swagger file.
-Accepted values for each country and brand can be found in the tabels below:
+&nbsp;Accepted values for each country and brand can be found in the tables below:
 
 ## Denmark
 
