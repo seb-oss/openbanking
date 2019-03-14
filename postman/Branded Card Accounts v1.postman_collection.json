@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "80a00a66-132d-4181-a051-982821b253bc",
+		"name": "Branded Card Accounts",
+		"version": "1.0",
+		"description": "Card account information for branded cards provided by SEBKort Bank AB.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{accountId}",
+			"item": [
+				{
+					"name": "Returns a list of transactions for one specific account.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v1/identified2/branded-card-accounts/:accountId/transactions?dateFrom={{dateFrom}}&dateTo={{dateTo}}&bookingStatus={{bookingStatus}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v1",
+								"identified2",
+								"branded-card-accounts",
+								":accountId",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}"
+								},
+								{
+									"key": "bookingStatus",
+									"value": "{{bookingStatus}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "{{accountId}}"
+								}
+							]
+						},
+						"description": "Returns a list of transactions for one specific account. You can search on account with or without a date period. The transaction list contains both booked transactions and pending transactions"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for {accountId}"
+		},
+		{
+			"name": "Returns a list of user’s card accounts and transactions for credit and charge cards issued by SEB Kort Bank AB.",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api-sandbox.sebgroup.com/ais/v1/identified2/branded-card-accounts/",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"sebgroup",
+						"com"
+					],
+					"path": [
+						"ais",
+						"v1",
+						"identified2",
+						"branded-card-accounts",
+						""
+					]
+				},
+				"description": "The API supports all brands where SEB Kort Bank AB is card issuer. Access is given per brand by providing a Brand Id in the authentication process.\nListed card accounts are those where the user is account holder and thus liable for any credit used. A card account can have more than one actual card, for example if a family member is given an extra for convenience. In this case there are still only one cardAccount but the corresponding list of transactions can hold purchases made on both cards, shown by the maskedPan attribute.\nThe card account REST structure uses a resource identifier to access account information. In order to query for transactions, a resource identifier must be fetched. Use the cardAccount list endpoint to get the resource ids for all cardAccounts."
+			},
+			"response": []
+		}
+	]
+}
