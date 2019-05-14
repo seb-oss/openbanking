@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "febe7d55-919d-4ff5-afe4-d521c4c5c876",
+		"name": "Authorization",
+		"version": "1.0",
+		"description": "The Authorization API manages access to protected API resources. All APIs requiring authorization need are required to attached a token issued by this API. This token is obtained only after a customer is identified and grants access to the requested resources. The issued is then inserted in each request using the _Authorization: Bearer_ header. Requests outside the scope of those approved by the customer are unauthorized and will be rejected.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authorize",
+			"item": [
+				{
+					"name": "Request approval for an Authorization Code",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/html"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/mga/sps/oauth/oauth20/authorize?client_id={{client_id}}&scope={{scope}}&redirect_uri={{redirect_uri}}&response_type={{response_type}}&state={{state}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"mga",
+								"sps",
+								"oauth",
+								"oauth20",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "{{client_id}}"
+								},
+								{
+									"key": "scope",
+									"value": "{{scope}}"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirect_uri}}"
+								},
+								{
+									"key": "response_type",
+									"value": "{{response_type}}"
+								},
+								{
+									"key": "state",
+									"value": "{{state}}"
+								}
+							]
+						},
+						"description": "Requests a customers consent to be issued an authorization grant for access to customer owned data. This request will redirect the user to login and approve the request for the given combination of scopes and client_id. This will generate and send a one time Authorization Code to the redirect_url according to OAuth2 specifications."
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for authorize"
+		},
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "Request Access Token for Authorization Code or Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "{{code}}",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirect_uri}}",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "{{grant_type}}",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "{{scope}}",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/mga/sps/oauth/oauth20/token",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"mga",
+								"sps",
+								"oauth",
+								"oauth20",
+								"token"
+							]
+						},
+						"description": "Allows requesting an access token following one of the flows below:\n- Authorization Code (exchange code for access token)\n- Refresh Token (exchange refresh token for a new access code)\n\nThe table below indicates the required parameters for each specific Grant Types. Empty cells indicate a parameter is ignored for that specific grant type.\n\n|        | Authorization Code  | Refresh Token |\n|---------------------|--------------------|------------|\n| __client_id__       | required           | required   |\n| __client_secret__   | required           | required   |\n| __code__            | required           |            |      \n| __redirect_uri__    | required           |            |\n| __scope__           | optional           | optional   |\n| __refresh_token__   |                    | required   |\n"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for token"
+		}
+	]
+}
