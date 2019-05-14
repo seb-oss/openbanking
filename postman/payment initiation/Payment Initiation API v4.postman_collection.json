@@ -1,0 +1,665 @@
+{
+	"info": {
+		"_postman_id": "a71d182e-ce0e-40e5-abbf-1e4ccfd724cb",
+		"name": "Payment Initiation API",
+		"version": "4.0",
+		"description": "Api for handling linked authentications",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "payments",
+			"item": [
+				{
+					"name": "Creates a payment initiation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{PSU-IP-Address}}"
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}"
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}"
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}"
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}"
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}"
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}"
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}"
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}"
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Payment instruction containing information about the payment."
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/payments/:paymentProduct",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"payments",
+								":paymentProduct"
+							],
+							"variable": [
+								{
+									"key": "paymentProduct",
+									"value": "{{paymentProduct}}"
+								}
+							]
+						},
+						"description": "Creates a payment initiation from the provided information.\nCorporate payment types can only be utilized with a \"PSU-Corporate-Id\" header set.\n\nThe payment API accepts different kinds of payment instructions.\nTemplates are used to help the consumer to select the right payment product and can be retrieved from the templates API.\nAccess the template list endpoint to find all the supported payment products, 'GET /templates'.\nNote that the debtor account (sender) for private payments is always an IBAN and the creditor account type is dependent on the selected template (payment product).\nThe available debtor accounts can either be obtained by the customer or by using the accounts API.\n\nResponse payload contains the same payment data that was sent in. Any additional fields that are not part of the chosen payment product will be stripped away.\nThe \"Location\" header of the response will contain the URL pointing to the created resource.\n'Location → /payments/swedish-domestic-private-credit-transfers/STOHYD01180208082256128737000001'\nThe response will also include _links and a paymentId as fields in the body.\n\nDuring the payment initiation the payment systems will process the payment data asynchronously.\nThe client must continuously check the status of the payment to make sure that the payment is ready for the next step in the payment process.\n\nTransfers between customers own accounts will be processed directly and queued for execution on the requested-execution data. Note that this is true only for the \nOther payments must be signed by the customer (i.e. through Mobilt BankID) before the payment is executed, except .\nThis step can be initiated once the associated authentication link is visible in the status endpoint.\nThe payments can either be signed one by one by creating an authorisations sub-resource under the payment; or multiple payments\ncan be signed at once by creating a signing basket (with a group of payment ids) and then creating an authorisations sub-resource\nunder the signing basket.\n\n\nThe mock will reset all data each sunday at midnight, a customer can also reset their own data by calling the reset endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Get the payment initiation.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/payments/:paymentProduct/:paymentId",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"payments",
+								":paymentProduct",
+								":paymentId"
+							],
+							"variable": [
+								{
+									"key": "paymentProduct",
+									"value": "{{paymentProduct}}"
+								},
+								{
+									"key": "paymentId",
+									"value": "{{paymentId}}"
+								}
+							]
+						},
+						"description": "Returns the previously posted payment initiation. Any additional fields that are not part of the chosen payment product will be stripped away."
+					},
+					"response": []
+				},
+				{
+					"name": "Payment initiation status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/payments/:paymentProduct/:paymentId/status",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"payments",
+								":paymentProduct",
+								":paymentId",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "paymentProduct",
+									"value": "{{paymentProduct}}"
+								},
+								{
+									"key": "paymentId",
+									"value": "{{paymentId}}"
+								}
+							]
+						},
+						"description": "During the payment initiation the payment systems will process payment data asynchronously.\nThe consumer of the API must continuously check the status of the payment to make sure that the payment is ready for the next step in the payment process.\nThe status request uses the payment id value that was returned in the Location header when posting the payment data.\n\n\nThe transaction status can have the following states\n\n* RCVD, Received, The payment has been received by SEB. To determine if payment is ready for signing, check the links block. Recommended polling interval is 5 seconds;\n* RCVD + link, Received, If \"startAuthorisationWithMethodSelection\" link is shown, the payment system has validated the payment. Please post authenticationMethodId to suitable authorisations endpoint to continue payment flow.\n* ACTC, AcceptedTechnicalValidation, AcceptedCustomerProfile, The payment initiation is signed and stored for execution and should be executed on the desired execution date.\n* RJCT, Rejected, The payment initiation failed. Additional information may be supplied to explain why the payment could not be made. A failed payment cannot be corrected, it has to be posted again as a new payment.\n\n\nPayments must be signed by the customer (i.e. through Mobilt BankID) before the payment is executed.\nThis step can be initiated once the associated authentication link is visible in the status endpoint.\nThe payments can either be signed one by one by creating an authorisations sub-resource under the payment; or multiple payments\ncan be signed at once by creating a signing basket (with a group of payment ids) and then creating an authorisations sub-resource\nunder the signing basket."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of authorisations associated with this payment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/payments/:paymentProduct/:paymentId/authorisations",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"payments",
+								":paymentProduct",
+								":paymentId",
+								"authorisations"
+							],
+							"variable": [
+								{
+									"key": "paymentProduct",
+									"value": "{{paymentProduct}}"
+								},
+								{
+									"key": "paymentId",
+									"value": "{{paymentId}}"
+								}
+							]
+						},
+						"description": "Gets a list of authorisation ids, including any active or previously failed authorisations for a specific payment."
+					},
+					"response": []
+				},
+				{
+					"name": "Starts a single payment authentication procedure for the end customer.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Json object containing value for selected authentication method."
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/payments/:paymentProduct/:paymentId/authorisations",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"payments",
+								":paymentProduct",
+								":paymentId",
+								"authorisations"
+							],
+							"variable": [
+								{
+									"key": "paymentProduct",
+									"value": "{{paymentProduct}}"
+								},
+								{
+									"key": "paymentId",
+									"value": "{{paymentId}}"
+								}
+							]
+						},
+						"description": "The payment authorization sub resource is used to sign a single payment with one signature.\n\n\nWhen the status of the payment is \"RCVD\" and the status response contains a link to \"startAuthorisationWithMethodSelection\"\nthe payment is ready for signing. The response from the \"/status\" call will also contain a list of \"scaMethods\" and the\nappropriate \"authenticationMethodId\" must be choosen and provided in the request body.\n\n\nThis will create an authorization resource, which can be checked if you want to follow the detailed progress of the customer signing.\nTo check if payment has been signed and stored, call payment status endpoint.\n\n\nThe response from this method will contain a psuMessage field, which should be shown to the end customer so that they\ncan initiate the correct signing action. The field tppMessages will contain messages directed at the client\ninforming them about actions to facilitate signing."
+					},
+					"response": []
+				},
+				{
+					"name": "Get authorization resource",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/payments/:paymentProduct/:paymentId/authorisations/:authorisationId",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"payments",
+								":paymentProduct",
+								":paymentId",
+								"authorisations",
+								":authorisationId"
+							],
+							"variable": [
+								{
+									"key": "paymentProduct",
+									"value": "{{paymentProduct}}"
+								},
+								{
+									"key": "paymentId",
+									"value": "{{paymentId}}"
+								},
+								{
+									"key": "authorisationId",
+									"value": "{{authorisationId}}"
+								}
+							]
+						},
+						"description": "When a customer signing is initiated, a corresponding Authorization resource will be created. To see the progress of the ongoing signing this resource should be retrieved.\n\nThe scaStatus field can have the following values\n* started -> Signing is initialized and the PSU should sign. * finalized -> Signing has finished succesfully. * failed -> Signing has ended unsucessfully, i.e due to timeout or cancellation."
+					},
+					"response": []
+				},
+				{
+					"name": "Reset all mock transactions and authorisations for all users.",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/payments/mock/resetall",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"payments",
+								"mock",
+								"resetall"
+							]
+						},
+						"description": "Deletes any created transactions in the mock, making funds available for further testing. A call to this endpoint removes all such entitys associated with provided authorisation, for all mock-users."
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for payments"
+		},
+		{
+			"name": "signing-baskets",
+			"item": [
+				{
+					"name": "Starts a multiple payment authentication procedure for the end customer. Creates a signing basket containing payment ids in the request body.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Object containing array of paymentIds"
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/signing-baskets",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"signing-baskets"
+							]
+						},
+						"description": "The signing basket is used to sign multiple payments with one signature. First create a signing basket containing the payment ids that should be signed. The response will contain a list of available SCA methods that can be used to sign the payments. Then create an authorisation sub resource using the selected payment SCA method."
+					},
+					"response": []
+				},
+				{
+					"name": "Returns information on a signing basket.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/signing-baskets/:basketId",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"signing-baskets",
+								":basketId"
+							],
+							"variable": [
+								{
+									"key": "basketId",
+									"value": "{{basketId}}"
+								}
+							]
+						},
+						"description": "Returns the which payments are part of the signing basket and the overall transaction status.\n\nThe transaction status can be\n* RJCT - This basket can no longer be used to sign for the payments (e.g. it contains a payment that has been rejected). Please create a new basket with the relevant payments. * RCVD - The basket is ready for signing. * ACTC - All payments in the basket are signed and will be executed."
+					},
+					"response": []
+				},
+				{
+					"name": "Selects a SCA (Strong Customer Authentication) method and creates an authorization for payments in the basket. The end customer should sign the payment using this method.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Json object containing value for selected authentication method."
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/signing-baskets/:basketId/authorisations",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"signing-baskets",
+								":basketId",
+								"authorisations"
+							],
+							"variable": [
+								{
+									"key": "basketId",
+									"value": "{{basketId}}"
+								}
+							]
+						},
+						"description": "Selects and starts the authentication procedure for the end customer. The selected SCA method id is sent in the request. If the basket contains any rejected payments or only unsignable payments the request will be rejected.\n\nPayment ids that are about to signed will be returned in the response and this list may differ from all the payments in the payment basket. Payments that are already in the middle of the signing process and already signed payments will be excluded from the created authorization resource. As such the created authorization might not contain all payments in the basket, so please check the \"paymentIds\" field."
+					},
+					"response": []
+				},
+				{
+					"name": "Get authorization resource",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json, s4003BA"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v4/identified2/signing-baskets/:basketId/authorisations/:authorisationId",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v4",
+								"identified2",
+								"signing-baskets",
+								":basketId",
+								"authorisations",
+								":authorisationId"
+							],
+							"variable": [
+								{
+									"key": "basketId",
+									"value": "{{basketId}}"
+								},
+								{
+									"key": "authorisationId",
+									"value": "{{authorisationId}}"
+								}
+							]
+						},
+						"description": "Retrieve this resource for information on a specific signing or to see the progress of an authorization signing.\n\n\nPayment ids that are about to signed will be returned in the response. Payments that are already in the middle of\nthe signing process and already signed payments will be excluded from the created authorization resource.\nAs such the created authorization might not contain all payments in the basket, so please check the \"paymentIds\" field.\n\n\nThe scaStatus field can have the following values\n\n* started -> Signing is initialized and the PSU should sign.\n* finalized -> Signing has finished succesfully.\n* failed -> Signing has ended unsucessfully, i.e due to timeout or cancellation."
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for signing-baskets"
+		}
+	]
+}
