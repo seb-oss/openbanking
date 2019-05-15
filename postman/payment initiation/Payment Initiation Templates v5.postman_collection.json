@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "07d2905c-5c10-436b-9e13-c45da34ececa",
+		"_postman_id": "061f1c2d-201b-4776-8729-6f98a4b5c8d3",
 		"name": "Payment Initiation Templates",
 		"description": "Templates to be used for payment initations for private customers.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -28,18 +28,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://api-dev.sebank.se/v3/pis/identified2/v1/templates",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/templates",
 							"protocol": "https",
 							"host": [
-								"api-dev",
-								"sebank",
-								"se"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
 							"path": [
-								"v3",
 								"pis",
-								"identified2",
-								"v1",
+								"v5",
 								"templates"
 							]
 						},
@@ -66,18 +64,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://api-dev.sebank.se/v3/pis/identified2/v1/templates/:templateId",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/templates/:templateId",
 							"protocol": "https",
 							"host": [
-								"api-dev",
-								"sebank",
-								"se"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
 							"path": [
-								"v3",
 								"pis",
-								"identified2",
-								"v1",
+								"v5",
 								"templates",
 								":templateId"
 							],
