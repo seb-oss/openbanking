@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "135f3aec-b925-4c11-ba73-c06df5e6d73a",
+		"_postman_id": "1d74647d-0a92-4ca2-a2af-a940e0b2ecf6",
 		"name": "Account Information",
 		"description": "Account information api information.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -80,19 +80,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://api-dev.sebank.se/tpp/v3/ais/identified2/v1/accounts?withBalance={{withBalance}}",
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts?withBalance={{withBalance}}",
 							"protocol": "https",
 							"host": [
-								"api-dev",
-								"sebank",
-								"se"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"ais",
+								"v5",
 								"identified2",
-								"v1",
 								"accounts"
 							],
 							"query": [
@@ -177,19 +175,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://api-dev.sebank.se/tpp/v3/ais/identified2/v1/accounts/:accountId?withBalance={{withBalance}}",
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts/:accountId?withBalance={{withBalance}}",
 							"protocol": "https",
 							"host": [
-								"api-dev",
-								"sebank",
-								"se"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"ais",
+								"v5",
 								"identified2",
-								"v1",
 								"accounts",
 								":accountId"
 							],
@@ -281,19 +277,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://api-dev.sebank.se/tpp/v3/ais/identified2/v1/accounts/:accountId/balances",
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts/:accountId/balances",
 							"protocol": "https",
 							"host": [
-								"api-dev",
-								"sebank",
-								"se"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"ais",
+								"v5",
 								"identified2",
-								"v1",
 								"accounts",
 								":accountId",
 								"balances"
@@ -324,19 +318,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://api-dev.sebank.se/tpp/v3/ais/identified2/v1/accounts/:accountId/transactions",
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts/:accountId/transactions",
 							"protocol": "https",
 							"host": [
-								"api-dev",
-								"sebank",
-								"se"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"ais",
+								"v5",
 								"identified2",
-								"v1",
 								"accounts",
 								":accountId",
 								"transactions"
@@ -366,19 +358,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://api-dev.sebank.se/tpp/v3/ais/identified2/v1/accounts/:accountId/transactions/:transactionId",
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts/:accountId/transactions/:transactionId",
 							"protocol": "https",
 							"host": [
-								"api-dev",
-								"sebank",
-								"se"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"ais",
+								"v5",
 								"identified2",
-								"v1",
 								"accounts",
 								":accountId",
 								"transactions",
