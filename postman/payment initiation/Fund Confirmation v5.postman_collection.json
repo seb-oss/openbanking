@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7c1cfaf4-650b-4d58-b372-342fcd03ea3b",
+		"_postman_id": "ba117a73-f466-4919-ab16-4ddfd9251075",
 		"name": "Fund Confirmation",
 		"description": "Provides a service that will answer whether the amount necessary for the execution of a payment transaction is available on the payment account of the payer.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -84,20 +84,17 @@
 							"raw": "Contains info on account, amount and payee."
 						},
 						"url": {
-							"raw": "https:///$(catalog.host)/tpp/v3/cof/identified2/v1/funds-confirmations",
+							"raw": "https://api-sandbox.sebgroup.com/cof/v5/identified2/funds-confirmations",
+							"protocol": "https",
 							"host": [
-								"https:"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"$(catalog.host)",
-								"tpp",
-								"v3",
 								"cof",
+								"v5",
 								"identified2",
-								"v1",
 								"funds-confirmations"
 							]
 						},
