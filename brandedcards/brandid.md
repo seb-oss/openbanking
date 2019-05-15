@@ -1,7 +1,7 @@
-# Available Brand ID's for Branded Card Accounts
+# Available brandId's for branded card accounts
 
-The brandId parameter is required when calling the authorizationUrl from the swagger file.<br/>
-Accepted values for each country and brand can be found in the tables below:
+brandId parameter is required when calling the authorizationUrl from the swagger file.
+Accepted values can be found in the tabels below
 
 ## Denmark
 
@@ -54,3 +54,12 @@ SJ | sjse
 Wallet | wase
 
 
+## Corporate brandid's
+
+Brand | brandId
+------------ | -------------
+Eurocard | ccms
+Jyske  | cjydk
+DNB | cdnno
+OP | copfi
+SEB | cseb
