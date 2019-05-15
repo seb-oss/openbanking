@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "bfb356de-2f35-448b-86dd-2a8d5a89887a",
-		"name": "Payment Initiation API",
-		"description": "Api for handling linked authentications",
+		"_postman_id": "4cad86e4-3fca-4741-957f-bbc4cc0478de",
+		"name": "Payment Initiation",
+		"description": "Api for creating payment initations.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -84,19 +84,17 @@
 							"raw": "Payment instruction containing information about the payment."
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/payments/:paymentProduct",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/payments/:paymentProduct",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"payments",
 								":paymentProduct"
 							],
@@ -138,19 +136,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/payments/:paymentProduct/:paymentId",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/payments/:paymentProduct/:paymentId",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"payments",
 								":paymentProduct",
 								":paymentId"
@@ -197,19 +193,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/payments/:paymentProduct/:paymentId/status",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/payments/:paymentProduct/:paymentId/status",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"payments",
 								":paymentProduct",
 								":paymentId",
@@ -257,19 +251,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/payments/:paymentProduct/:paymentId/authorisations",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/payments/:paymentProduct/:paymentId/authorisations",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"payments",
 								":paymentProduct",
 								":paymentId",
@@ -317,19 +309,17 @@
 							"raw": "Json object containing value for selected authentication method."
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/payments/:paymentProduct/:paymentId/authorisations",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/payments/:paymentProduct/:paymentId/authorisations",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"payments",
 								":paymentProduct",
 								":paymentId",
@@ -377,19 +367,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/payments/:paymentProduct/:paymentId/authorisations/:authorisationId",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/payments/:paymentProduct/:paymentId/authorisations/:authorisationId",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"payments",
 								":paymentProduct",
 								":paymentId",
@@ -435,19 +423,17 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/payments/mock/resetall",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/payments/mock/resetall",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"payments",
 								"mock",
 								"resetall"
@@ -490,19 +476,17 @@
 							"raw": "Object containing array of paymentIds"
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/signing-baskets",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/signing-baskets",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"signing-baskets"
 							]
 						},
@@ -537,19 +521,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/signing-baskets/:basketId",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/signing-baskets/:basketId",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"signing-baskets",
 								":basketId"
 							],
@@ -591,19 +573,17 @@
 							"raw": "Json object containing value for selected authentication method."
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/signing-baskets/:basketId/authorisations",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/signing-baskets/:basketId/authorisations",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"signing-baskets",
 								":basketId",
 								"authorisations"
@@ -646,19 +626,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://tpp-api.sebgroup.com/tpp/v3/pis/identified2/v1/signing-baskets/:basketId/authorisations/:authorisationId",
+							"raw": "https://api-sandbox.sebgroup.com/pis/v5/identified2/signing-baskets/:basketId/authorisations/:authorisationId",
 							"protocol": "https",
 							"host": [
-								"tpp-api",
+								"api-sandbox",
 								"sebgroup",
 								"com"
 							],
 							"path": [
-								"tpp",
-								"v3",
 								"pis",
+								"v5",
 								"identified2",
-								"v1",
 								"signing-baskets",
 								":basketId",
 								"authorisations",
