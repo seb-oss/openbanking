@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2856bb8f-a5e0-4d25-9db9-0d94ab08779a",
+		"_postman_id": "5e9d84c9-21bb-4fe1-8386-637acf068dbb",
 		"name": "Corporate Card Accounts",
 		"description": "Lists card accounts for credit cards and charge cards but not debit cards.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -24,17 +24,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///$(catalog.host)/ais/v2/identified4/corporate-card-accounts/:accountId",
+							"raw": "http://api-sandbox.sebgroup.com/ais/v1/identified4/corporate-card-accounts/:accountId",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"$(catalog.host)",
 								"ais",
-								"v2",
+								"v1",
 								"identified4",
 								"corporate-card-accounts",
 								":accountId"
@@ -65,17 +64,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///$(catalog.host)/ais/v2/identified4/corporate-card-accounts/:accountId/transactions?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+							"raw": "http://api-sandbox.sebgroup.com/ais/v1/identified4/corporate-card-accounts/:accountId/transactions?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"api-sandbox",
+								"sebgroup",
+								"com"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"$(catalog.host)",
 								"ais",
-								"v2",
+								"v1",
 								"identified4",
 								"corporate-card-accounts",
 								":accountId",
@@ -120,17 +118,16 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http:///$(catalog.host)/ais/v2/identified4/corporate-card-accounts/",
+					"raw": "http://api-sandbox.sebgroup.com/ais/v1/identified4/corporate-card-accounts/",
+					"protocol": "http",
 					"host": [
-						"http:"
+						"api-sandbox",
+						"sebgroup",
+						"com"
 					],
-					"port": "",
 					"path": [
-						"",
-						"",
-						"$(catalog.host)",
 						"ais",
-						"v2",
+						"v1",
 						"identified4",
 						"corporate-card-accounts",
 						""
