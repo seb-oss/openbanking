@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "1d74647d-0a92-4ca2-a2af-a940e0b2ecf6",
+		"name": "Account Information",
+		"description": "Account information api information.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "Returns a list of a user´s accounts.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}"
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{PSU-IP-Address}}"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}"
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}"
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}"
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}"
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}"
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}"
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}"
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}"
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts?withBalance={{withBalance}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v5",
+								"identified2",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "withBalance",
+									"value": "{{withBalance}}"
+								}
+							]
+						},
+						"description": "Listed accounts are those where the user is account holder or has corporate account access and where the account type is PSD2 supported. Accessing corporate accounts can be done by setting the PSU-Corporate-Id header in this and other account endpoints. In production this needs to be combined with calling in with a corporate client-id.\nSEB will always return all accounts that are PSD2 supported, there is no detailed consent that limits account accessibility. Terminated accounts will also be shown in the list for several months (same limit as other online channels).\n\nThe following account types are part of PSD2 for private individuals\n* Privatkonto; A transaction account for everyday economy. It is possible to connect a card or payment service to the account.\n* Enkla sparkonto; An account for savings. It is not possible to connect a card or payment service to the account but it is possible to make money transfers from and to the account.\n* Personallönekonto; A transaction account for everyday economy.\n* Valutakonto; A transaction account in other currency than SEK.  It is not possible to connect a card or payment service to the account but it is possible to make money transfers from and to the account.\n* Notariatkonto; An account connected to a SEB custody account. It is not possible to connect a card or payment service to the account or to make money transfers from the account. It is possible to make money transfers to the account.\nThe account REST structure uses an anonymised resource identifier to access account information. In order to query for transactions and balances, a resource identifier must be fetched. Use the account list endpoint to get the resource ids for all accounts. The resource id for each account will not change over time, so it can be stored and reused for subsequent calls.\n\nAccount information services can be called unlimited times if the end user is actively requesting information. Account information services can be called 4 times a day (reset at midnight) without the end user actively requesting information and this is 4 times per user, per account and per account information operation. To indicate that the end user is actively requesting account information, please provide the IP address of the end user in the header 'PSU-IP-Address' for the relevant operation call; otherwise omit the header."
+					},
+					"response": []
+				},
+				{
+					"name": "Returns detailed account information, potentially including balances for one specific account.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}"
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{PSU-IP-Address}}"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}"
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}"
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}"
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}"
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}"
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}"
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}"
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}"
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts/:accountId?withBalance={{withBalance}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v5",
+								"identified2",
+								"accounts",
+								":accountId"
+							],
+							"query": [
+								{
+									"key": "withBalance",
+									"value": "{{withBalance}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "{{accountId}}"
+								}
+							]
+						},
+						"description": "Returns detailed account information, with or without balances for one specific account. This endpoint returns more detailed information about the account than the account list. Examples of detailed information is account interest and owner name.\n\nThe accountId, that is supplied in the request path, is the \"resourceId\" attribute of the account structure returned by the account list endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Returns balances for a specific account",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "{{Accept}}"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{X-Request-ID}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}"
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{PSU-IP-Address}}"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}"
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}"
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}"
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}"
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}"
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}"
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}"
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}"
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts/:accountId/balances",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v5",
+								"identified2",
+								"accounts",
+								":accountId",
+								"balances"
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "{{accountId}}"
+								}
+							]
+						},
+						"description": "Returns balances for booked transactions and available amount (including any credit limit) for the account.\n\n* interimBooked, current balance calculated using only booked transactions.\n* interimAvailable current balance calculated including booked, reserved and pending amounts.\n\nThe accountId, that is supplied in the request path, is the \"resourceId\" attribute of the account structure returned by the account list endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Returns a list of transactions for one specific account.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts/:accountId/transactions",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v5",
+								"identified2",
+								"accounts",
+								":accountId",
+								"transactions"
+							],
+							"variable": [
+								{
+									"key": "accountId"
+								}
+							]
+						},
+						"description": "Returns a list of transactions for one specific account. You can search on account with or without a date period. The transaction list contains both booked transactions and pending transactions (either upcoming payments or reserved amounts).\n\nRequests without dateFrom and dateTo will be paginated if the result set is too large. A paginated result will contain a next-link and that value can be used to retrieve the next page result. Please use the exact value in the next-link when retrieving page result. Results are never paginated when filtering by date, but the client may then experience timeouts if the date span is too large. In case of a timeout, please shorten the date span.\n\nThe transactions can be of different types and some of them can have additional details. If the entry has a \"transactionDetails\" link, use the link reference to access those transaction details.\n\nWe recommend the following strategy when fetching transactional data on a daily basis\n* Pending transactions are volatile, so fetch all of them on a daily basis.\n* Booked transactions are permanent, but they may (very seldom) be corrected during the same day, so use the date delimiter to fetch transactions from today and yesterday to get the current state of booked transactions.\n* Do use the filtering options in the account transactions API to fetch only the necessary transactions data that is needed\n\nThe accountId, that is supplied in the request path, is the \"resourceId\" attribute of the account structure returned by the account list endpoint. The IBAN or BBAN can never be used directly to retrieve the transaction list."
+					},
+					"response": []
+				},
+				{
+					"name": "Returns transaction details on a specific transaction.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v5/identified2/accounts/:accountId/transactions/:transactionId",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v5",
+								"identified2",
+								"accounts",
+								":accountId",
+								"transactions",
+								":transactionId"
+							],
+							"variable": [
+								{
+									"key": "accountId"
+								},
+								{
+									"key": "transactionId"
+								}
+							]
+						},
+						"description": "Depending on transaction type, different detail fields will be returned, e.g. exchange rate, message to creditor, place of purchase etc.\n\nThe accountId, that is supplied in the request path, is the \"resourceId\" attribute of the account structure returned by the account list endpoint. The transactionId is returned by the transaction list endpoint."
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for accounts"
+		}
+	]
+}
