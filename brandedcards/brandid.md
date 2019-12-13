@@ -1,11 +1,12 @@
-# Available brandId's for branded card accounts
+# Available Brand ID's for branded card accounts
 
-brandId parameter is required when calling the authorizationUrl from the swagger file.
-Accepted values can be found in the tabels below
+Brand ID parameter is required when calling the authorizationUrl from the swagger file.
+Accepted values for Branded Card Accounts and Corporate Card Accounts can be found in the tables below
 
-## Denmark
+## Branded Cards Brand ID
+#### Denmark
 
-Brand | brandId
+Brand | Brand ID
 ------------ | -------------
 Eurocard| ecdk
 GlobeCard | gcdk
@@ -13,17 +14,17 @@ Jyske | jydk
 Quintessentially | qudk
 SAS | sadk
 
-## Finland
+#### Finland
 
-Brand | brandId
+Brand | Brand ID
 ------------ | -------------
 Eurocard| ecfi
 Finnair | fafi
 SAS | safi
 
-## Norway
+#### Norway
 
-Brand | brandId
+Brand | Brand ID
 ------------ | -------------
 Cirkle K | stno
 Esso | esno
@@ -36,9 +37,9 @@ SEB Selected | ssno
 Volvo kortet | vono
 
 
-## Sweden
+#### Sweden
 
-Brand | brandId
+Brand | Brand ID
 ------------ | -------------
 Cirkle K | stse
 Eurocard  | ecse
@@ -54,9 +55,9 @@ SJ | sjse
 Wallet | wase
 
 
-## Corporate brandid's
+## Corporate Brand IDs
 
-Brand | brandId
+Brand | Brand ID
 ------------ | -------------
 Eurocard | ccms
 Jyske  | cjydk
