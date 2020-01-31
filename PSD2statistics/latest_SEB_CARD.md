@@ -25,14 +25,14 @@ The time period covered by this report is 2019-09-14 – 2019-12-31.
 ### Segment: Private – AIS Average Response
 ![private_ais][private_ais]
 
-[corporate_ais]: ./2019Q4_img/SEB_CARD_corporate_ais.gif
-[corporate_downtime]: ./2019Q4_img/SEB_CARD_corporate_downtime.gif
-[corporate_error]: ./2019Q4_img/SEB_CARD_corporate_error.gif
-[corporate_uptime]: ./2019Q4_img/SEB_CARD_corporate_uptime.gif
-[private_ais]: ./2019Q4_img/SEB_CARD_private_ais.gif
-[private_downtime]: ./2019Q4_img/SEB_CARD_private_downtime.gif
-[private_error]: ./2019Q4_img/SEB_CARD_private_error.gif
-[private_uptime]: ./2019Q4_img/SEB_CARD_private_uptime.gif
+[corporate_ais]: ./archive/2019Q4/SEB_CARD_corporate_ais.gif
+[corporate_downtime]: ./archive/2019Q4/SEB_CARD_corporate_downtime.gif
+[corporate_error]: ./archive/2019Q4/SEB_CARD_corporate_error.gif
+[corporate_uptime]: ./archive/2019Q4/SEB_CARD_corporate_uptime.gif
+[private_ais]: ./archive/2019Q4/SEB_CARD_private_ais.gif
+[private_downtime]: ./archive/2019Q4/SEB_CARD_private_downtime.gif
+[private_error]: ./archive/2019Q4/SEB_CARD_private_error.gif
+[private_uptime]: ./archive/2019Q4/SEB_CARD_private_uptime.gif
 
 
 > @ 2020 SEB Kort Bank AB

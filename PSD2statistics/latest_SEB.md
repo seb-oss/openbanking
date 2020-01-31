@@ -30,18 +30,18 @@ The time period covered by this report is 2019-09-14 – 2019-12-31.
 ![private_fcis][private_fcis]
 
 
-[corporate_ais]: ./2019Q4_img/corporate_ais.gif
-[corporate_downtime]: ./2019Q4_img/corporate_downtime.gif
-[corporate_error]: ./2019Q4_img/corporate_error.gif
-[corporate_fcis]: ./2019Q4_img/corporate_fcis.gif
-[corporate_pis]: ./2019Q4_img/corporate_pis.gif
-[corporate_uptime]: ./2019Q4_img/corporate_uptime.gif
-[private_ais]: ./2019Q4_img/private_ais.gif
-[private_downtime]: ./2019Q4_img/private_downtime.gif
-[private_error]: ./2019Q4_img/private_error.gif
-[private_fcis]: ./2019Q4_img/private_fcis.gif
-[private_pis]: ./2019Q4_img/private_pis.gif
-[private_uptime]: ./2019Q4_img/private_uptime.gif
+[corporate_ais]: ./archive/2019Q4/corporate_ais.gif
+[corporate_downtime]: ./archive/2019Q4/corporate_downtime.gif
+[corporate_error]: ./archive/2019Q4/corporate_error.gif
+[corporate_fcis]: ./archive/2019Q4/corporate_fcis.gif
+[corporate_pis]: ./archive/2019Q4/corporate_pis.gif
+[corporate_uptime]: ./archive/2019Q4/corporate_uptime.gif
+[private_ais]: ./archive/2019Q4/private_ais.gif
+[private_downtime]: ./archive/2019Q4/private_downtime.gif
+[private_error]: ./archive/2019Q4/private_error.gif
+[private_fcis]: ./archive/2019Q4/private_fcis.gif
+[private_pis]: ./archive/2019Q4/private_pis.gif
+[private_uptime]: ./archive/2019Q4/private_uptime.gif
 
 
 > @ 2020 Skandinaviska Enskilda Banken AB (publ)
