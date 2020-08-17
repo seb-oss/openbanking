@@ -1,0 +1,4553 @@
+{
+	"info": {
+		"_postman_id": "5edd23ab-30da-4c9b-b03b-73578beea861",
+		"name": "SEB PSD2 Private examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account Information",
+			"item": [
+				{
+					"name": "Card Accounts",
+					"item": [
+						{
+							"name": "Card Accounts - List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "987f56b7-1339-469c-9345-7dae255892ca",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"card_account_resource_Id\", jsonData.cardAccounts[0].resourceId);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/ais/v2/identified2/card-accounts/",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"ais",
+										"v2",
+										"identified2",
+										"card-accounts",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Card Accounts - Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "299d0beb-b7ca-4cea-b5fb-c7acd274fab0",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Expected transactions\", function() {",
+											"   pm.expect(jsonData.transactions.booked.length).to.eql(4);",
+											"   pm.expect(jsonData.transactions.pending.length).to.eql(4);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/ais/v2/identified2/card-accounts/{{card_account_resource_Id}}/transactions?dateFrom={{RandomFutureDate}}&dateTo={{RandomFutureDate}}&bookingStatus=booked",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"ais",
+										"v2",
+										"identified2",
+										"card-accounts",
+										"{{card_account_resource_Id}}",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "dateFrom",
+											"value": "{{RandomFutureDate}}"
+										},
+										{
+											"key": "dateTo",
+											"value": "{{RandomFutureDate}}"
+										},
+										{
+											"key": "bookingStatus",
+											"value": "booked"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Accounts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7ee9a76-729e-48ec-941e-63790e4f64e5",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"account_resource_Id\", jsonData.accounts[0].resourceId);",
+									"postman.setEnvironmentVariable(\"account_details_href\", jsonData.accounts[0]._links.transactions.href);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "358d737a-0a97-41f0-8b46-7edfc50264f8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": " Bearer 4nZQPDGimJ8PlU0TMmzW",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2/accounts",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v6",
+								"identified2",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "62d10eb5-bb89-4c1a-b0a0-108ad55c316c",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"transactions_href\", jsonData._links.transactions.href);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2/accounts/{{account_resource_Id}}?withBalance=true",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v6",
+								"identified2",
+								"accounts",
+								"{{account_resource_Id}}"
+							],
+							"query": [
+								{
+									"key": "withBalance",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balances",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "82ee6211-3044-4ee1-9d15-5c7a36b31f02",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2/accounts/{{account_resource_Id}}/balances",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v6",
+								"identified2",
+								"accounts",
+								"{{account_resource_Id}}",
+								"balances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Transactions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7794470a-a030-410e-82a6-cd8fd5ebbdaf",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"transaction_id\", jsonData.transactions.booked.find(x => !!x._links).transactionId);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2{{transactions_href}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v6",
+								"identified2{{transactions_href}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Transaction Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9a7d9a62-6c00-4fbc-815c-d99ae4e5eeb0",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2/accounts/{{account_resource_Id}}/transactions/{{transaction_id}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v6",
+								"identified2",
+								"accounts",
+								"{{account_resource_Id}}",
+								"transactions",
+								"{{transaction_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "eccde97d-7917-4e09-942b-0e77ff30c46a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "407ade0e-78b3-4e24-8966-5f61d63c8bff",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Payment Initiation",
+			"item": [
+				{
+					"name": "Swedish Domestic - Single",
+					"item": [
+						{
+							"name": "Get Payment Template - Swedish Domestic",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "38c5a3b5-7a2a-4b36-b09e-a38bea558843",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"template_id\", jsonData.templateId);",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/templates/swedish-domestic-private-credit-transfers",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"templates",
+										"swedish-domestic-private-credit-transfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Swedish Domestic",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b64445ba-cebd-442e-a63d-e98575e3242e",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "ea4db517-ce91-4032-8ac5-daa332c85746",
+										"exec": [
+											"pm.test(\"Expect status CREATED\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"payment_status_href\", jsonData._links.status.href);",
+											"postman.setEnvironmentVariable(\"payment_id\", jsonData.paymentId);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"templateId\": \"swedish-domestic-private-credit-transfers\",\n\t\"instructedAmount\": {\n\t\t\"currency\": \"SEK\",\n\t\t\"amount\": \"99.50\"\n\t},\n\t\"debtorAccount\": {\n\t\t\"iban\": \"SE3750000000054400047881\"\n\t},\n\t\"creditorAccount\": {\n\t\t\"iban\": \"SE2550000000054400047903\"\n\t},\n\t\"debtorAccountMessage\": \"max 12 chars\",\n\t\"creditorAccountMessage\": \"max 12 chars\",\n\t\"requestedExecutionDate\": \"{{RandomFutureDate}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"{{template_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "688688cd-b69d-4919-ac69-57db31bfefbb",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"{{template_id}}",
+										"{{payment_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ec3d6876-a754-4d85-bf3c-d54fa983d47c",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Expected transaction status 'RCVD'\", function() {",
+											"   pm.expect(jsonData.transactionStatus).to.eql(\"RCVD\");",
+											"});",
+											"",
+											"postman.setEnvironmentVariable(\"authentication_method_id\", jsonData.scaMethods[0].authenticationMethodId);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e93bbc3c-4506-47be-bdb2-8deaac2273c7",
+										"exec": [
+											"// We wait for status to return SCA methods",
+											"setTimeout(function(){}, 5000);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/{{payment_status_href}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"{{payment_status_href}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment  - Authorisation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d46136aa-8779-4c29-9a4c-1da486c6284d",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Expect SCA status 'scaMethodSelected'\", function() {",
+											"    pm.expect(jsonData.scaStatus).to.eql(\"scaMethodSelected\");",
+											"});",
+											"",
+											"postman.setEnvironmentVariable(\"authorisation_id\", jsonData.authorisationId);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"authenticationMethodId\":\"{{authentication_method_id}}\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id}}/authorisations",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"{{template_id}}",
+										"{{payment_id}}",
+										"authorisations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Authorisation Status",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id}}/authorisations/{{authorisation_id}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"{{template_id}}",
+										"{{payment_id}}",
+										"authorisations",
+										"{{authorisation_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment -  Plusgiro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ee8bfccc-00d9-4212-89a1-97547e54e904",
+										"exec": [
+											"pm.test(\"Expect status CREATED\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"payment_status_href\", jsonData._links.status.href);",
+											"postman.setEnvironmentVariable(\"payment_id\", jsonData.paymentId);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"templateId\": \"swedish-domestic-private-plusgiros\",\r\n    \"instructedAmount\": {\r\n        \"currency\": \"SEK\",\r\n        \"amount\": \"10.55\"\r\n    },\r\n    \"debtorAccount\": {\r\n        \"iban\": \"SE3750000000054400047881\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"pgnr\": \"12345678\"\r\n    },\r\n    \"debtorAccountMessage\": \"max 20 characters.\",\r\n    \"remittanceInformationUnstructured\": \"max 100 characters\",\r\n    \"requestedExecutionDate\": \"{{RandomFutureDate}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/swedish-domestic-private-plusgiros",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"swedish-domestic-private-plusgiros"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Plusgiro Status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0c36031f-4f99-4f9c-a62c-614785790f27",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Expected transaction status 'RCVD'\", function() {",
+											"   pm.expect(jsonData.transactionStatus).to.eql(\"RCVD\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/{{payment_status_href}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"{{payment_status_href}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4be0d7a7-6c14-44af-ad77-722c3a4f2ec3",
+										"exec": [
+											"pm.test(\"Expect status NO CONTENT\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/swedish-domestic-private-plusgiros/{{payment_id}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"swedish-domestic-private-plusgiros",
+										"{{payment_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Swedish Domestic - Basket",
+					"item": [
+						{
+							"name": "Get Payment Template - Swedish Domestic Bankgiro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f6202aec-0542-4916-8582-0d99685b6dde",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"template_id\", jsonData.templateId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/templates/swedish-domestic-private-bankgiros",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"templates",
+										"swedish-domestic-private-bankgiros"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Bankgiro 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "713d4761-aad0-4396-969a-04420a53d18e",
+										"exec": [
+											"pm.test(\"Expect status CREATED\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"payment_status_href_1\", jsonData._links.status.href);",
+											"postman.setEnvironmentVariable(\"payment_id_1\", jsonData.paymentId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Request-ID",
+										"type": "text",
+										"value": "{{$randomUUID}}"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": " Bearer {{AccessToken}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"type": "text",
+										"value": "{{PSU-Corporate-Id}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"type": "text",
+										"value": "{{$randomIP}}"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"type": "text",
+										"value": "{{PSU-IP-Port}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"type": "text",
+										"value": "{{PSU-User-Agent}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"type": "text",
+										"value": "{{PSU-Geo-Location}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"type": "text",
+										"value": "{{PSU-Accept}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"type": "text",
+										"value": "{{PSU-Accept-Charset}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"type": "text",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"type": "text",
+										"value": "{{PSU-Accept-Language}}{",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"type": "text",
+										"value": "{{PSU-Http-Method}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"type": "text",
+										"value": "{{PSU-Device-ID}}",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"templateId\": \"{{template_id}}\",\n    \"instructedAmount\": {\n        \"currency\": \"SEK\",\n        \"amount\": \"55.50\"\n    },\n    \"debtorAccount\": {\n        \"iban\": \"SE3750000000054400047881\"\n    },\n    \"creditorAccount\": {\n        \"bgnr\": \"8080-1111\"\n    },\n    \"debtorAccountMessage\": \"max 20 chars\",\n    \"remittanceInformationStructured\": {\n        \"reference\": \"1993112196394\",\n        \"referenceType\": \"OCR\"\n    },\n    \"requestedExecutionDate\": \"{{RandomFutureDate}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"{{template_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Bankgiro 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "713d4761-aad0-4396-969a-04420a53d18e",
+										"exec": [
+											"pm.test(\"Expect status CREATED\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"payment_status_href_2\", jsonData._links.status.href);",
+											"postman.setEnvironmentVariable(\"payment_id_2\", jsonData.paymentId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Request-ID",
+										"type": "text",
+										"value": "{{$randomUUID}}"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": " Bearer {{AccessToken}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"type": "text",
+										"value": "{{PSU-Corporate-Id}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"type": "text",
+										"value": "{{$randomIP}}"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"type": "text",
+										"value": "{{PSU-IP-Port}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"type": "text",
+										"value": "{{PSU-User-Agent}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"type": "text",
+										"value": "{{PSU-Geo-Location}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"type": "text",
+										"value": "{{PSU-Accept}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"type": "text",
+										"value": "{{PSU-Accept-Charset}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"type": "text",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"type": "text",
+										"value": "{{PSU-Accept-Language}}{",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"type": "text",
+										"value": "{{PSU-Http-Method}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"type": "text",
+										"value": "{{PSU-Device-ID}}",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"templateId\": \"{{template_id}}\",\n    \"instructedAmount\": {\n        \"currency\": \"SEK\",\n        \"amount\": \"44.50\"\n    },\n    \"debtorAccount\": {\n        \"iban\": \"SE3750000000054400047881\"\n    },\n    \"creditorAccount\": {\n        \"bgnr\": \"8080-1111\"\n    },\n    \"debtorAccountMessage\": \"max 20 chars\",\n    \"remittanceInformationStructured\": {\n        \"reference\": \"1993112196394\",\n        \"referenceType\": \"OCR\"\n    },\n    \"requestedExecutionDate\": \"{{RandomFutureDate}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"{{template_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Details 1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "78e9f0c9-3a85-4701-8007-10dcbee395f0",
+										"exec": [
+											"pm.test(\"Expect status CREATED\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id_1}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"{{template_id}}",
+										"{{payment_id_1}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Details 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "45f13bc4-7630-4578-8818-811fd09f9240",
+										"exec": [
+											"pm.test(\"Expect status CREATED\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-Request-ID",
+										"type": "text",
+										"value": "{{$randomUUID}}"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": " Bearer {{AccessToken}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"type": "text",
+										"value": "{{PSU-Corporate-Id}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"type": "text",
+										"value": "{{$randomIP}}"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"type": "text",
+										"value": "{{PSU-IP-Port}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"type": "text",
+										"value": "{{PSU-User-Agent}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"type": "text",
+										"value": "{{PSU-Geo-Location}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"type": "text",
+										"value": "{{PSU-Accept}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"type": "text",
+										"value": "{{PSU-Accept-Charset}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"type": "text",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"type": "text",
+										"value": "{{PSU-Accept-Language}}{",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"type": "text",
+										"value": "{{PSU-Http-Method}}",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"type": "text",
+										"value": "{{PSU-Device-ID}}",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id_2}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"payments",
+										"{{template_id}}",
+										"{{payment_id_2}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment - Status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a885c4b5-9acb-4252-930b-0ac76b57ecf3",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Expected transaction status 'RCVD'\", function() {",
+											"   pm.expect(jsonData.transactionStatus).to.eql(\"RCVD\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "434ed893-3cfe-40bc-afbd-8afdc2c61bb2",
+										"exec": [
+											"// We wait for status to return SCA methods",
+											"setTimeout(function(){}, 5000);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2{{payment_status_href_1}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2{{payment_status_href_1}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Signing Basket - Start",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4c335614-6ca8-445f-a8f5-53d5e7bee4e0",
+										"exec": [
+											"pm.test(\"Expect status CREATED\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"postman.setEnvironmentVariable(\"basket_id\", jsonData.basketId);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"paymentIds\":[\"{{payment_id_1}}\",\"{{payment_id_2}}\"]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/signing-baskets",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"signing-baskets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Signing Basket - Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3758f128-fc65-4e93-a2bc-8af3f6b77afb",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Expected transaction status 'RCVD'\", function() {",
+											"   pm.expect(jsonData.transactionStatus).to.eql(\"RCVD\");",
+											"});",
+											"",
+											"postman.setEnvironmentVariable(\"authentication_method_id\", jsonData.scaMethods[0].authenticationMethodId);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/signing-baskets/{{basket_id}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"signing-baskets",
+										"{{basket_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Signing Basket - Authorisation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "801c0ce6-cbf1-467f-b990-b80c78f83e4f",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Expect SCA status 'scaMethodSelected'\", function() {",
+											"    pm.expect(jsonData.scaStatus).to.eql(\"scaMethodSelected\");",
+											"});",
+											"",
+											"postman.setEnvironmentVariable(\"authorisation_id\", jsonData.authorisationId);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"authenticationMethodId\":\"{{authentication_method_id}}\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/signing-baskets/{{basket_id}}/authorisations",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"signing-baskets",
+										"{{basket_id}}",
+										"authorisations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Signing Basket - Authorisation Status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b171f825-8e3c-43f4-ac2b-0b5dd600e96b",
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$randomUUID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": " Bearer {{AccessToken}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Corporate-Id",
+										"value": "{{PSU-Corporate-Id}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Port",
+										"value": "{{PSU-IP-Port}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-User-Agent",
+										"value": "{{PSU-User-Agent}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Geo-Location",
+										"value": "{{PSU-Geo-Location}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept",
+										"value": "{{PSU-Accept}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Charset",
+										"value": "{{PSU-Accept-Charset}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Encoding",
+										"value": "{{PSU-Accept-Encoding}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Accept-Language",
+										"value": "{{PSU-Accept-Language}}{",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Http-Method",
+										"value": "{{PSU-Http-Method}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "PSU-Device-ID",
+										"value": "{{PSU-Device-ID}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/signing-baskets/{{basket_id}}/authorisations/{{authorisation_id}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"pis",
+										"v6",
+										"identified2",
+										"signing-baskets",
+										"{{basket_id}}",
+										"authorisations",
+										"{{authorisation_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Payment Templates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b90a953e-cbde-490e-a85e-f18764de749e",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v6/templates",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v6",
+								"templates"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "13622846-0c18-4952-9e05-3a81e18adb97",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "249fc4c6-9c42-4392-9531-5f27e6f0b819",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Fund Confirmation",
+			"item": [
+				{
+					"name": "Check funds - Available",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "44db952d-7221-48a4-af38-e194e7dd900f",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.fundsAvailable).to.eql(true);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"account\": {\r\n    \"iban\": \"SE2550000000054400047903\",\r\n    \"bban\": \"54400047903\",\r\n    \"bic\": \"DEUTDEFFXXX\"\r\n  },\r\n  \"instructedAmount\": {\r\n    \"amount\": \"14.36\",\r\n    \"currency\": \"SEK\"\r\n  },\r\n  \"payee\": \"me\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/cof/v6/identified2/funds-confirmations",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"cof",
+								"v6",
+								"identified2",
+								"funds-confirmations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check funds - Not Available",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "70b1fb6e-856a-4b67-8d6b-2bba33aca459",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.fundsAvailable).to.eql(false);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Request-ID",
+								"type": "text",
+								"value": "{{$randomUUID}}"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": " Bearer {{AccessToken}}",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"type": "text",
+								"value": "{{PSU-Corporate-Id}}",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"type": "text",
+								"value": "{{$randomIP}}"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"type": "text",
+								"value": "{{PSU-IP-Port}}",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"type": "text",
+								"value": "{{PSU-User-Agent}}",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"type": "text",
+								"value": "{{PSU-Geo-Location}}",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"type": "text",
+								"value": "{{PSU-Accept}}",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"type": "text",
+								"value": "{{PSU-Accept-Charset}}",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"type": "text",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"type": "text",
+								"value": "{{PSU-Accept-Language}}{",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"type": "text",
+								"value": "{{PSU-Http-Method}}",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"type": "text",
+								"value": "{{PSU-Device-ID}}",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"account\": {\r\n    \"iban\": \"SE2550000000054400047903\",\r\n    \"bban\": \"54400047903\",\r\n    \"bic\": \"DEUTDEFFXXX\"\r\n  },\r\n  \"instructedAmount\": {\r\n    \"amount\": \"14886.36\",\r\n    \"currency\": \"SEK\"\r\n  },\r\n  \"payee\": \"anuoj\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/cof/v6/identified2/funds-confirmations",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"cof",
+								"v6",
+								"identified2",
+								"funds-confirmations"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Periodic Payments",
+			"item": [
+				{
+					"name": "Get Payment Template - Swedish Credit Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c5e6643a-4105-471e-afd5-3ea0b738cc02",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"template_id\", jsonData.templateId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v6/templates/swedish-domestic-private-credit-transfers",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v6",
+								"templates",
+								"swedish-domestic-private-credit-transfers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Periodic Payments - Credit Account Monthly",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19d30353-ba2e-4cf4-8fb7-e958509e9834",
+								"exec": [
+									"pm.test(\"Expect status CREATED\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"periodic_payment_id\", jsonData.paymentId);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"debtorAccountMessage\": \"max 12 chars\",\n\t\"creditorAccountMessage\": \"max 12 chars\",\n\t\"instructedAmount\": {\n\t\t\"currency\": \"SEK\",\n\t\t\"amount\": \"5.50\"\n\t},\n\t\"debtorAccount\": {\n\t\t\"iban\": \"SE3750000000054400047881\"\n\t},\n\t\"creditorAccount\": {\n\t\t\"iban\": \"SE5050000000054400047938\"\n\t},\n\t\"startDate\": \"{{RandomFutureDate}}\",\n\t\"frequency\": \"monthly\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/periodic-payments/{{template_id}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v6",
+								"identified2",
+								"periodic-payments",
+								"{{template_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Periodic Payments - Standing Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "31cf8ef2-8cfb-4714-8882-a42bef9851c7",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/periodic-payments/{{template_id}}/{{periodic_payment_id}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v6",
+								"identified2",
+								"periodic-payments",
+								"{{template_id}}",
+								"{{periodic_payment_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Periodic Payments  - Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93368808-1b7a-4a26-9264-0a690c026ffc",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.test(\"Expected transaction status 'RCVD'\", function() {",
+									"   pm.expect(jsonData.transactionStatus).to.eql(\"RCVD\");",
+									"});",
+									"",
+									"postman.setEnvironmentVariable(\"authentication_method_id\", jsonData.scaMethods[0].authenticationMethodId);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "54c2dfd6-0dd9-4415-9654-8b67dc806576",
+								"exec": [
+									"// We wait for status to return SCA methods",
+									"setTimeout(function(){}, 5000);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/periodic-payments/{{template_id}}/{{periodic_payment_id}}/status",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v6",
+								"identified2",
+								"periodic-payments",
+								"{{template_id}}",
+								"{{periodic_payment_id}}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Periodic Payments - Authorisation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6690e4e8-8d31-4728-8dc9-5117934099e4",
+								"exec": [
+									"pm.test(\"Expect status CREATED\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"periodic_authorisation_id\", jsonData.authorisationId);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"authenticationMethodId\":\"mobiltbankid\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/periodic-payments/{{template_id}}/{{periodic_payment_id}}/authorisations",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v6",
+								"identified2",
+								"periodic-payments",
+								"{{template_id}}",
+								"{{periodic_payment_id}}",
+								"authorisations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Periodic Payments - Authorizations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c1e5c98-0b89-437a-9df9-b2a17551b4da",
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/periodic-payments/{{template_id}}/{{periodic_payment_id}}/authorisations/{{periodic_authorisation_id}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"pis",
+								"v6",
+								"identified2",
+								"periodic-payments",
+								"{{template_id}}",
+								"{{periodic_payment_id}}",
+								"authorisations",
+								"{{periodic_authorisation_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Payment Init Reset",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Request-ID",
+						"value": "{{$randomUUID}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": " Bearer {{AccessToken}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-Corporate-Id",
+						"value": "{{PSU-Corporate-Id}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-IP-Address",
+						"value": "{{$randomIP}}",
+						"type": "text"
+					},
+					{
+						"key": "PSU-IP-Port",
+						"value": "{{PSU-IP-Port}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-User-Agent",
+						"value": "{{PSU-User-Agent}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-Geo-Location",
+						"value": "{{PSU-Geo-Location}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-Accept",
+						"value": "{{PSU-Accept}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-Accept-Charset",
+						"value": "{{PSU-Accept-Charset}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-Accept-Encoding",
+						"value": "{{PSU-Accept-Encoding}}{",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-Accept-Language",
+						"value": "{{PSU-Accept-Language}}{",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-Http-Method",
+						"value": "{{PSU-Http-Method}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "PSU-Device-ID",
+						"value": "{{PSU-Device-ID}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/mock/resetall",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"sebgroup",
+						"com"
+					],
+					"path": [
+						"pis",
+						"v6",
+						"identified2",
+						"payments",
+						"mock",
+						"resetall"
+					]
+				},
+				"description": "ONLY available for the Sandbox environment"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "4nZQPDGimJ8PlU0TMmzW",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "96ca4fa8-0df3-4a2e-bd09-dc94de1331c1",
+				"type": "text/javascript",
+				"exec": [
+					"var date = nextDay(3);",
+					"var formattedDate = [date.getFullYear(),  ('0' + (date.getMonth() + 1)).slice(-2), ('0' + date.getDate()).slice(-2)].join('-');",
+					"",
+					"postman.setEnvironmentVariable(\"RandomFutureDate\", formattedDate);",
+					"",
+					"function nextDay(x){",
+					"    var now = new Date();",
+					"    now.setDate(now.getDate() + ((x+(7-now.getDay())) % 7)+1)",
+					"    return now;",
+					"}",
+					"",
+					"const jar = pm.cookies.jar();",
+					"",
+					"jar.clear(\"api-sandbox.sebgroup.com\", function (error) {",
+					"  // error - <Error>",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "7922f3a1-2ae4-424c-9a53-cbfce457d5bd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d60a0a49-ba1d-465e-aa7b-e106bf68d8cb",
+			"key": "RandomFutureDate",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
