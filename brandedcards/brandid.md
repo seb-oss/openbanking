@@ -55,7 +55,7 @@ SJ | sjse
 Wallet | wase
 
 
-## Corporate Brand IDs
+## Corporate Brand ID's
 
 Brand | Brand ID
 ------------ | -------------
@@ -63,4 +63,4 @@ Eurocard | ccms
 Jyske  | cjydk
 DNB | cdnno
 OP | copfi
-SEB | cseb
+SEB | cssse
