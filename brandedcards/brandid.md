@@ -1,9 +1,11 @@
 # Available Brand ID's for branded card accounts
 
 Brand ID parameter is required when calling the authorizationUrl from the swagger file.
-Accepted values for Branded Card Accounts and Corporate Card Accounts can be found in the tables below
+Accepted values for Branded Card Accouts and Corporate Card Accounts can be found in the tables below
 
-## Branded Cards Brand ID
+## Branded Cards Brand ID 
+**These works with the api Branded Card Accounts, not to be used with the api Corporate Card Accounts**
+
 #### Denmark
 
 Brand | Brand ID
@@ -56,6 +58,7 @@ Wallet | wase
 
 
 ## Corporate Brand ID's
+**These works with the api Corporate Card Accounts, not for use with the api Branded Card Accounts**
 
 Brand | Brand ID
 ------------ | -------------
