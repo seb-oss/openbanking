@@ -21,14 +21,14 @@ The time period covered by this report is 2021-01-01 – 2021-03-31.
 ### Segment: Private – AIS Average Response
 ![private_ais][private_ais]
 
-[corporate_ais]: ./archive/2021Q1/SEB_CARD_corporate_ais.gif
-[corporate_downtime]: ./archive/2021Q1/SEB_CARD_corporate_downtime.gif
-[corporate_error]: ./archive/2021Q1/SEB_CARD_corporate_error.gif
-[corporate_uptime]: ./archive/2021Q1/SEB_CARD_corporate_uptime.gif
-[private_ais]: ./archive/2021Q1/SEB_CARD_private_ais.gif
-[private_downtime]: ./archive/2021Q1/SEB_CARD_private_downtime.gif
-[private_error]: ./archive/2021Q1/SEB_CARD_private_error.gif
-[private_uptime]: ./archive/2021Q1/SEB_CARD_private_uptime.gif
+[corporate_ais]: ./SEB_CARD_corporate_ais.gif
+[corporate_downtime]: ./SEB_CARD_corporate_downtime.gif
+[corporate_error]: ./SEB_CARD_corporate_error.gif
+[corporate_uptime]: ./SEB_CARD_corporate_uptime.gif
+[private_ais]: ./SEB_CARD_private_ais.gif
+[private_downtime]: ./SEB_CARD_private_downtime.gif
+[private_error]: ./SEB_CARD_private_error.gif
+[private_uptime]: ./SEB_CARD_private_uptime.gif
 
 
 > @ 2021 SEB Kort Bank AB
