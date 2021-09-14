@@ -1,7 +1,8 @@
 PSD2 Sandbox Certificate
 ========================
 
-It is possible to test the PSD2 APIs in the Sandbox Environment using MTLS. 
-We have provided a __test certificate__ for this process, which is located on our github pages at https://github.com/sebgroup/openbanking.
-The hostname for testing is: https://tpp-api-sandbox.sebgroup.com.
-The password for these certifiates is: _qwerty_
+__Test certificates__ for __testing__ the PSD2 APIs in the Sandbox Environment using MTLS.
+
+The hostname for __testing__ is: https://tpp-api-sandbox.sebgroup.com.
+
+The certificate password is 'qwerty', currently ranked in third place among the world's most popular passwords.
