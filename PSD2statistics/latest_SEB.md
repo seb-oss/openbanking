@@ -32,13 +32,13 @@ The time period covered by this report is 2021-07-01 – 2021-09-30.
 
 [corporate_ais]: ./archive/2021Q3/corporate_ais.JPG
 [corporate_downtime]: ./archive/2021Q3/corporate_downtime.JPG
-[corporate_error3]: ./archive/2021Q3/corporate_error.JPG
-[corporate_fcis3]: ./archive/2021Q3/corporate_fcis.JPG
+[corporate_error]: ./archive/2021Q3/corporate_error.JPG
+[corporate_fcis]: ./archive/2021Q3/corporate_fcis.JPG
 [corporate_pis]: ./archive/2021Q3/corporate_pis.JPG
 [corporate_uptime]: ./archive/2021Q3/corporate_uptime.JPG
-[private_ais3]: ./archive/2021Q3/private_ais.JPG
+[private_ais]: ./archive/2021Q3/private_ais.JPG
 [private_downtime]: ./archive/2021Q3/private_downtime.JPG
-[private_error3]: ./archive/2021Q3/private_error.JPG
+[private_error]: ./archive/2021Q3/private_error.JPG
 [private_fcis]: ./archive/2021Q3/private_fcis.JPG
 [private_pis]: ./archive/2021Q3/private_pis.JPG
 [private_uptime]: ./archive/2021Q3/private_uptime.JPG
