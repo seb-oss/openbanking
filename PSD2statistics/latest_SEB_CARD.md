@@ -6,6 +6,23 @@ The time period covered by this report is 2021-09-01 – 2021-12-31.
 
 Due to errors in the data collections we are missing AIS, web and Phone app data for the first part of the timeperiod, it's missing for private response time and private error response rate.
 
+### Segment: Corporate – Uptime
+![corporate_uptime][corporate_uptime]
+### Segment: Corporate – Downtime
+![corporate_downtime][corporate_downtime]
+### Segment: Corporate – Error Response Rate
+![corporate_error][corporate_error]
+### Segment: Corporate – AIS Average Response
+![corporate_ais][corporate_ais]
+### Segment: Private – Uptime
+![private_uptime][private_uptime]
+### Segment: Private – Downtime
+![private_downtime][private_downtime]
+### Segment: Private – Error Response Rate
+![private_error][private_error]
+### Segment: Private – AIS Average Response
+![private_ais][private_ais]
+
 [corporate_ais]: ./archive/2021Q4/SEB_CARD_corporate_ais.gif
 [corporate_downtime]: ./archive/2021Q4/SEB_CARD_corporate_downtime.gif
 [corporate_error]: ./archive/2021Q4/SEB_CARD_corporate_error.gif
@@ -13,6 +30,6 @@ Due to errors in the data collections we are missing AIS, web and Phone app data
 [private_ais]: ./archive/2021Q4/SEB_CARD_private_ais.gif
 [private_downtime]: ./archive/2021Q4/SEB_CARD_private_downtime.gif
 [private_error]: ./archive/2021Q4/SEB_CARD_private_error.gif
-[private_uptime]: ./archive/2021Q4/SEB_CARD_corporate_ais/SEB_CARD_private_uptime.gif
+[private_uptime]: ./archive/2021Q4/SEB_CARD_private_uptime.gif
 
 > @ 2022 SEB Kort Bank AB
