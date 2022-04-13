@@ -4,16 +4,9 @@ Publication of daily statistics on the availability and performance of the dedic
 
 The time period covered by this report is 2022-01-01 – 2022-03-31.
 
-Due to errors in the data collections we are missing AIS, web and Phone app data for the first part of the timeperiod, it's missing for private response time and private error response rate.
+Due to no users on the corporate side, we don't have any statistics to show. 
 
-### Segment: Corporate – Uptime
-![corporate_uptime][corporate_uptime]
-### Segment: Corporate – Downtime
-![corporate_downtime][corporate_downtime]
-### Segment: Corporate – Error Response Rate
-![corporate_error][corporate_error]
-### Segment: Corporate – AIS Average Response
-![corporate_ais][corporate_ais]
+
 ### Segment: Private – Uptime
 ![private_uptime][private_uptime]
 ### Segment: Private – Downtime
@@ -23,10 +16,6 @@ Due to errors in the data collections we are missing AIS, web and Phone app data
 ### Segment: Private – AIS Average Response
 ![private_ais][private_ais]
 
-[corporate_ais]: ./archive/2022Q1/SEB_CARD_corporate_ais.gif
-[corporate_downtime]: ./archive/2022Q1/SEB_CARD_corporate_downtime.gif
-[corporate_error]: ./archive/2022Q1/SEB_CARD_corporate_error.gif
-[corporate_uptime]: ./archive/2022Q1/SEB_CARD_corporate_uptime.gif
 [private_ais]: ./archive/2022Q1/SEB_CARD_private_ais.gif
 [private_downtime]: ./archive/2022Q1/SEB_CARD_private_downtime.gif
 [private_error]: ./archive/2022Q1/SEB_CARD_private_error.gif
