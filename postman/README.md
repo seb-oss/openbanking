@@ -29,7 +29,7 @@ You need to have your own sandbox credentials to test this collection against ou
 * clientSecret
 * redirectUri (should be same one used to create a sandbox app)
 
-![Screenshot environment variables] (https://github.com/sebgroup/openbanking/blob/master/postman/images/postman_env.png)
+![Screenshot environment variables](https://github.com/sebgroup/openbanking/blob/master/postman/images/postman_env.png)
  
 4. In the top right corner of Postman, click the environment selector and select 'SEB PSD2 Sandbox'. 
 
@@ -44,7 +44,7 @@ Read [PSD2 Authorization](https://developer.sebgroup.com/products/authorization)
 [Redirect Authorization step by step guide](https://developer.sebgroup.com/products/authorization/redirect-authorization) 
 
 1. Request approval for an Authorization Code
-Obtaining the authorization code is an interactive process, which requires you to log in as a user. ** It requires you to execute the request in the browser**   
+Obtaining the authorization code is an interactive process, which requires you to log in as a user. **It requires you to execute the request in the browser**   
   ``` 
   https://api-sandbox.sebgroup.com/mga/sps/oauth/oauth20/authorize?client_id={{clientId}}&scope=psd2_accounts&redirect_uri={{redirectUri}}&response_type=code&state=&brandid
   ``` 
@@ -52,11 +52,11 @@ You could find a uri to copy by clicking [Send] button from postman (look at the
 
 Add your sandbox identity number, you can find a list of available identity number from [SEB Developer Portal](https://developer.sebgroup.com/products/authorization/redirect-authorization#/authorize-get):
 
-![Screenshot redirect authorization] (https://github.com/sebgroup/openbanking/blob/master/postman/images/authorization.png)
+![Screenshot redirect authorization](https://github.com/sebgroup/openbanking/blob/master/postman/images/authorization.png)
 
 You can find authorization code in your browser:
 
-![Screenshot redirect authorization code] (https://github.com/sebgroup/openbanking/blob/master/postman/images/authorization_code.png)
+![Screenshot redirect authorization code](https://github.com/sebgroup/openbanking/blob/master/postman/images/authorization_code.png)
 
 2. Request access token for Authorization Code or Refresh Token
 Add collected authorization code provided by the /authorize endpoint to body.
