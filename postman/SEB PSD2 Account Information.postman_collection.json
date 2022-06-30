@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f29a7d73-2f0b-4386-998c-8f3cb854a57e",
+		"_postman_id": "40523c75-c1ca-40ed-889f-2fa8bb63de0b",
 		"name": "SEB PSD2 Account Information",
 		"description": "StartFragment\n\nThe PSD2 account information product provides easy integration with Swedish customers' Transaction and Card accounts at SEB.\n\nEndFragment\n\nSEB Developer Portal documentation:  \n[https://developer.sebgroup.com/products/psd2-account-information](https://developer.sebgroup.com/products/psd2-account-information)\n\nGithub postman information:  \n[openbanking/postman at master · sebgroup/openbanking · GitHub](https://github.com/sebgroup/openbanking/tree/master/postman)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -129,7 +129,7 @@
 										},
 										{
 											"key": "code",
-											"value": "sJb8uKw2qukvd9i9eXCMYMRieDTVBR",
+											"value": "",
 											"description": "(Required) Authorization code provided by the /authorize endpoint to the redirect_uri.",
 											"type": "text"
 										},
