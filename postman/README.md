@@ -33,7 +33,7 @@ You need to have your own sandbox credentials to test this collection against ou
 * redirectUri (should be same one used to create a sandbox app)
 
 4. click [Save]
-5. In the top right corner of postman, click the environment selector and select 'SEB PSD2 Sandbox'. 
+5. In the top right corner of postman, click the environment selector and select 'SEB PSD2 Sandbox'
 
 ![Screenshot environment variables](./images/postman_env.png)
 
