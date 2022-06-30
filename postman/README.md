@@ -30,8 +30,8 @@ You need to have your own sandbox credentials to test this collection against ou
 * redirectUri (should be same one used to create a sandbox app)
 
 ![Screenshot environment variables](./images/postman_env.png)
- 
-4. In the top right corner of postman, click the environment selector and select 'SEB PSD2 Sandbox'. 
+4. Save. 
+5. In the top right corner of postman, click the environment selector and select 'SEB PSD2 Sandbox'. 
 
 ###  Step 4. Test PSD2 APIs with sandbox
 1. Use authorization to collect your access token.
