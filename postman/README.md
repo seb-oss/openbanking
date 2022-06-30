@@ -44,11 +44,11 @@ Read [PSD2 Authorization](https://developer.sebgroup.com/products/authorization)
 [Redirect Authorization step by step guide](https://developer.sebgroup.com/products/authorization/redirect-authorization) 
 
 1. Request approval for an Authorization Code
-Obtaining the authorization code is an interactive process, which requires you to log in as a user. It requires you to execute the request in the browser:  
+Obtaining the authorization code is an interactive process, which requires you to log in as a user. ** It requires you to execute the request in the browser**   
   ``` 
   https://api-sandbox.sebgroup.com/mga/sps/oauth/oauth20/authorize?client_id={{clientId}}&scope=psd2_accounts&redirect_uri={{redirectUri}}&response_type=code&state=&brandid
   ``` 
-You could find a uri to copy by clicking [Send] button from postman 
+You could find a uri to copy by clicking [Send] button from postman (look at the console window in the bottom)
 
 Add your sandbox identity number, you can find a list of available identity number from [SEB Developer Portal](https://developer.sebgroup.com/products/authorization/redirect-authorization#/authorize-get):
 
