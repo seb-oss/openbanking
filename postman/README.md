@@ -17,7 +17,7 @@ You need to have your own sandbox credentials to test this collection against ou
 ### Step 2. Importing Environment into Postman
 1. Click on the Environments tab on the left navbar of Postman
 1. Click on the Import button
-1. Click on the Upload Files button
+1. Click on the Upload Files button and select 'SEB PSD2 Sandbox.postman_environment.json' file
 1. Click on the Import Button
  
 ### Step 3. Set your own Environment  
