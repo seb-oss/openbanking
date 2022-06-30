@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "757cbf9b-466b-4690-84df-b8f74d7c871d",
+		"_postman_id": "04dbc602-60bc-47f6-b323-247aa2347f02",
 		"name": "SEB PSD2 Corporate Card Accounts v1.1",
 		"description": "Lists card accounts for credit cards and charge cards but not debit cards.\n\nDeveloper Portal documentation:  \n[SEB Developer Portal (sebgroup.com)](https://developer.sebgroup.com/products/psd2-branded-card-accounts)\n\nGithub postman information:  \n[openbanking/postman at master · sebgroup/openbanking · GitHub](https://github.com/sebgroup/openbanking/tree/master/postman)\n\nBranded Card Authorization:  \nTo collect your bearer token, add your clientId, clientSecret & redirectUri in Variables tab\n\nwhere to find brandedId:  \n[openbanking/brandedcards at master · sebgroup/openbanking · GitHub](https://github.com/sebgroup/openbanking/tree/master/brandedcards)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -45,12 +45,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrlAuth}}/authorize?client_id={{clientId}}&scope={{scope}}&redirect_uri={{redirectUri}}&response_type=code&state=&brandid={{brandId}}",
+							"raw": "{{authorizationUri}}?client_id={{clientId}}&scope={{scope}}&redirect_uri={{redirectUri}}&response_type=code&state=&brandid={{brandId}}",
 							"host": [
-								"{{baseUrlAuth}}"
-							],
-							"path": [
-								"authorize"
+								"{{authorizationUri}}"
 							],
 							"query": [
 								{
@@ -583,6 +580,21 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"card_account_resource_Id\", jsonData.cardAccounts[0].resourceId);\r",
+									" "
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -591,7 +603,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -753,19 +765,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/:accountId",
+							"raw": "{{baseUrl}}/{{card_account_resource_Id}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								":accountId"
-							],
-							"variable": [
-								{
-									"key": "accountId",
-									"value": "{{accountId}}",
-									"description": "(Required) accountId"
-								}
+								"{{card_account_resource_Id}}"
 							]
 						},
 						"description": "Returns a single corporate card account with details."
@@ -941,12 +946,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/:accountId/transactions?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+							"raw": "{{baseUrl}}/{{card_account_resource_Id}}/transactions?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								":accountId",
+								"{{card_account_resource_Id}}",
 								"transactions"
 							],
 							"query": [
@@ -959,13 +964,6 @@
 									"key": "dateTo",
 									"value": "{{dateTo}}",
 									"description": "dateTo"
-								}
-							],
-							"variable": [
-								{
-									"key": "accountId",
-									"value": "{{accountId}}",
-									"description": "(Required) accountId"
 								}
 							]
 						},
@@ -1185,7 +1183,7 @@
 		},
 		{
 			"key": "authorizationUri",
-			"value": "https://api-sandbox.sebgroup.com/ais/v1/identified4/branded-card-accounts",
+			"value": "https://api-sandbox.sebgroup.com/mga/sps/oauth/oauth20/authorize",
 			"type": "default"
 		},
 		{
@@ -1215,7 +1213,7 @@
 		},
 		{
 			"key": "brandId",
-			"value": "",
+			"value": "ecse",
 			"type": "default"
 		},
 		{

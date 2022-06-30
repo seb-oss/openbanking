@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4ba2b957-86d2-4e44-8938-b5fe6dbc49b7",
+		"_postman_id": "94632c50-2d9d-4be0-8574-f13798bd9e4b",
 		"name": "SEB PSD2 Branded Card Accounts v1.1",
 		"description": "Card account information for branded cards provided by SEBKort Bank AB.\n\nDeveloper Portal documentation:  \n[SEB Developer Portal (sebgroup.com)](https://developer.sebgroup.com/products/psd2-branded-card-accounts)\n\nGithub postman information:  \n[openbanking/postman at master · sebgroup/openbanking · GitHub](https://github.com/sebgroup/openbanking/tree/master/postman)\n\nEndFragment  \nEndFragment\n\nBranded Card Authorization:  \nTo collect your bearer token, add your clientId, clientSecret & redirectUri in Variables tab\n\nwhere to find brandedId:  \n[openbanking/brandedcards at master · sebgroup/openbanking · GitHub](https://github.com/sebgroup/openbanking/tree/master/brandedcards)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -45,9 +45,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrlAuth}}/authorize?client_id={{clientId}}&scope={{scope}}&redirect_uri={{redirectUri}}&response_type=code&state=&brandid={{brandId}}",
+							"raw": "{{authorizationUri}}/authorize?client_id={{clientId}}&scope={{scope}}&redirect_uri={{redirectUri}}&response_type=code&state=&brandid={{brandId}}",
 							"host": [
-								"{{baseUrlAuth}}"
+								"{{authorizationUri}}"
 							],
 							"path": [
 								"authorize"
@@ -583,6 +583,21 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"card_account_resource_Id\", jsonData.cardAccounts[0].resourceId);\r",
+									" "
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"protocolProfileBehavior": {
@@ -599,7 +614,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
