@@ -643,10 +643,6 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Expect status OK\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
-											"\r",
 											"var jsonData = JSON.parse(responseBody);\r",
 											"\r",
 											"postman.setEnvironmentVariable(\"autostart_token\", jsonData.autostart_token);"
@@ -666,7 +662,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"personal_identity_number\": \"8811215477\",\r\n  \"start_token\": \"{{autostart_token}}\"\r\n}"
+									"raw": "{\r\n  \"personal_identity_number\": \"199311219639\",\r\n  \"start_token\": \"{{autostart_token}}\"\r\n}"
 								},
 								"url": {
 									"raw": "https://api-sandbox.sebgroup.com/open/sb/auth/mock/v1/login",
@@ -1931,11 +1927,6 @@
 		},
 		{
 			"key": "state",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"key": "auth_req_id",
 			"value": "",
 			"type": "string"
 		}
