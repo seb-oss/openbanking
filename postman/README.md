@@ -48,6 +48,9 @@ Read [PSD2 Authorization](https://developer.sebgroup.com/products/authorization)
 1. Request approval for an Authorization Code
 Obtaining the authorization code is an interactive process, which requires you to log in as a user. **It requires you to execute the request in the browser**   
 You could find a uri to copy by clicking [Send] button from [GET] Request approval for an Authorization Code (look at the console window in the bottom of your postman)
+
+![Screenshot authorization collection_cpmspöe](./images/postman_console.png)
+
   ``` 
   https://api-sandbox.sebgroup.com/mga/sps/oauth/oauth20/authorize?client_id={{clientId}}&scope=psd2_accounts&redirect_uri={{redirectUri}}&response_type=code&state=&brandid
   ``` 
@@ -61,7 +64,7 @@ You can find authorization code in your browser:
 ![Screenshot redirect authorization code](./images/authorization_code.png)
 
 2. Request access token for Authorization Code or Refresh Token
-Add collected authorization code provided by the /authorize endpoint to body.
+Add collected authorization code to request body as below screenshot.
 
 ![Screenshot add redirect authorization code](./images/authorization_code_form.png)
 
