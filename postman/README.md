@@ -74,7 +74,7 @@ Add collected authorization code to request body as below screenshot.
 
 ### Decoupled Authorization 
 
-1. Initiate authorization request [Send], no need to change any values. This step returns an authorization registration id: auth_req_id. You can change the preferred start_mode to "qr", where ast returns an autostarttoken (for users with Bank ID on the same device) and qr returns a qr code string.
+1. Initiate authorization request [Send], no need to change any values. This step returns an authorization registration id: auth_req_id. 
   ``` 
     {
       "client_id": "{{clientId}}",
