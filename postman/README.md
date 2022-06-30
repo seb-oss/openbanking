@@ -1,4 +1,4 @@
-# SEB PSD2 Postman collection
+# SEB PSD2 postman collection
 Get started using SEBs PSD2 products with postman collection. Mocked data is available through sandbox apps. Real data is available through production apps.
 
 Read [SEB Developer Portal](https://developer.sebgroup.com) for more information.
@@ -6,22 +6,22 @@ Read [SEB Developer Portal](https://developer.sebgroup.com) for more information
 ### Prerequisite
 You need to have your own sandbox credentials to test this collection against our sandbox. Go to [SEB Developer Portal Apps](https://developer.sebgroup.com/apps) to retrieve client ID & client secret.  
 
-## How to use SEB PSD2 Postman collection
+## How to use SEB PSD2 postman collection
 
-### Step 1. Importing Collection into Postman
-1. Open Postman
+### Step 1. Importing Collection into postman
+1. Open postman
 1. Select Import in the left navigation menu.
 1. Select the files you want to import.
-1. Select Import to bring your data into Postman.
+1. Select Import to bring your data into postman.
  
-### Step 2. Importing Environment into Postman
-1. Click on the Environments tab on the left navbar of Postman
+### Step 2. Importing Environment into postman
+1. Click on the Environments tab on the left navbar of postman
 1. Click on the Import button
 1. Click on the Upload Files button and select 'SEB PSD2 Sandbox.postman_environment.json' file
 1. Click on the Import Button
  
 ### Step 3. Set your own Environment  
-1. Click on the Environments tab on the left navbar of Postman
+1. Click on the Environments tab on the left navbar of postman
 2. Select 'SEB PSD2 Sandbox'
 3. Add your own variables for below, leave others empty. You will find below values when you create sandbox App from developer portal.  
 
@@ -31,7 +31,7 @@ You need to have your own sandbox credentials to test this collection against ou
 
 ![Screenshot environment variables](https://github.com/sebgroup/openbanking/blob/master/postman/images/postman_env.png)
  
-4. In the top right corner of Postman, click the environment selector and select 'SEB PSD2 Sandbox'. 
+4. In the top right corner of postman, click the environment selector and select 'SEB PSD2 Sandbox'. 
 
 Now you are ready to test.
  
