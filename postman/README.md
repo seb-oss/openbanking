@@ -60,7 +60,7 @@ Obtaining the authorization code is an interactive process, which requires you t
 > Tip! you could find url to use by clicking [Send] button from the endpoint '[GET] Request approval for an Authorization Code' then open the console window in the bottom of your postman to find url as below image.
 
 
-![Screenshot authorization collection console(./images/postman_console.png)
+![Screenshot authorization collection console](./images/postman_console.png)
 
 > or create your own url adding your clientId, scope and redirectUri 
 
