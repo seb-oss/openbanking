@@ -9600,16 +9600,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/templates/swedish-domestic-private-credit-transfers",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/templates/swedish-domestic-private-credit-transfers",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
 								"templates",
 								"swedish-domestic-private-credit-transfers"
 							]
@@ -9748,17 +9743,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/{{template_id}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"{{template_id}}"
 							]
@@ -9867,17 +9856,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/{{template_id}}/{{payment_id}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"{{template_id}}",
 								"{{payment_id}}"
@@ -10006,18 +9989,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/{{payment_status_href}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}{{payment_status_href}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
-							],
-							"path": [
-								"pis",
-								"v6",
-								"identified2",
-								"{{payment_status_href}}"
+								"{{baseUrl}}{{payment_status_href}}"
 							]
 						}
 					},
@@ -10148,17 +10122,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id}}/authorisations",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/{{template_id}}/{{payment_id}}/authorisations",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"{{template_id}}",
 								"{{payment_id}}",
@@ -10256,17 +10224,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id}}/authorisations/{{authorisation_id}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/{{template_id}}/{{payment_id}}/authorisations/{{authorisation_id}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"{{template_id}}",
 								"{{payment_id}}",
@@ -10399,17 +10361,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/swedish-domestic-private-plusgiros",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/swedish-domestic-private-plusgiros",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"swedish-domestic-private-plusgiros"
 							]
@@ -10524,17 +10480,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/{{payment_status_href}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/{{payment_status_href}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"{{payment_status_href}}"
 							]
 						}
@@ -10647,17 +10597,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/swedish-domestic-private-plusgiros/{{payment_id}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/swedish-domestic-private-plusgiros/{{payment_id}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"swedish-domestic-private-plusgiros",
 								"{{payment_id}}"
@@ -10700,16 +10644,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/templates/swedish-domestic-private-bankgiros",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/templates/swedish-domestic-private-bankgiros",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
 								"templates",
 								"swedish-domestic-private-bankgiros"
 							]
@@ -10838,17 +10777,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/{{template_id}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"{{template_id}}"
 							]
@@ -10977,17 +10910,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/{{template_id}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"{{template_id}}"
 							]
@@ -11096,17 +11023,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id_1}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/{{template_id}}/{{payment_id_1}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"{{template_id}}",
 								"{{payment_id_1}}"
@@ -11216,17 +11137,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/payments/{{template_id}}/{{payment_id_2}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/payments/{{template_id}}/{{payment_id_2}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"payments",
 								"{{template_id}}",
 								"{{payment_id_2}}"
@@ -11352,17 +11267,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2{{payment_status_href_1}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}{{payment_status_href_1}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
-							],
-							"path": [
-								"pis",
-								"v6",
-								"identified2{{payment_status_href_1}}"
+								"{{baseUrl}}{{payment_status_href_1}}"
 							]
 						}
 					},
@@ -11489,17 +11396,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/signing-baskets",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/signing-baskets",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"signing-baskets"
 							]
 						}
@@ -11616,17 +11517,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/signing-baskets/{{basket_id}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/signing-baskets/{{basket_id}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"signing-baskets",
 								"{{basket_id}}"
 							]
@@ -11759,17 +11654,11 @@
 							}
 						},
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/signing-baskets/{{basket_id}}/authorisations",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/signing-baskets/{{basket_id}}/authorisations",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"signing-baskets",
 								"{{basket_id}}",
 								"authorisations"
@@ -11879,17 +11768,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/pis/v6/identified2/signing-baskets/{{basket_id}}/authorisations/{{authorisation_id}}",
-							"protocol": "https",
+							"raw": "{{baseUrl}}/signing-baskets/{{basket_id}}/authorisations/{{authorisation_id}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUrl}}"
 							],
 							"path": [
-								"pis",
-								"v6",
-								"identified2",
 								"signing-baskets",
 								"{{basket_id}}",
 								"authorisations",
@@ -11908,7 +11791,22 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					""
+					"var date = nextDay(3);",
+					"var formattedDate = [date.getFullYear(),  ('0' + (date.getMonth() + 1)).slice(-2), ('0' + date.getDate()).slice(-2)].join('-');",
+					"",
+					"postman.setEnvironmentVariable(\"RandomFutureDate\", formattedDate);",
+					"",
+					"function nextDay(x){",
+					"    var now = new Date();",
+					"    now.setDate(now.getDate() + ((x+(7-now.getDay())) % 7)+1)",
+					"    return now;",
+					"}",
+					"",
+					"const jar = pm.cookies.jar();",
+					"",
+					"jar.clear(\"api-sandbox.sebgroup.com\", function (error) {",
+					"  // error - <Error>",
+					"});"
 				]
 			}
 		},

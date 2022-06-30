@@ -643,9 +643,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"var jsonData = JSON.parse(responseBody);\r",
 											"\r",
-											"postman.setEnvironmentVariable(\"autostart_token\", jsonData.autostart_token);"
+											"if(responseBody ) {\r",
+											"  var jsonData = JSON.parse(responseBody);\r",
+											"  postman.setEnvironmentVariable(\"autostart_token\", jsonData.autostart_token);\r",
+											"};\r",
+											" "
 										],
 										"type": "text/javascript"
 									}
@@ -1210,17 +1213,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/ais/v7/identified2/accounts/{{account_resource_Id}}?withBalance=true",
-							"protocol": "https",
+							"raw": "{{baseUri}}/accounts/{{account_resource_Id}}?withBalance=true",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUri}}"
 							],
 							"path": [
-								"ais",
-								"v7",
-								"identified2",
 								"accounts",
 								"{{account_resource_Id}}"
 							],
@@ -1335,17 +1332,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/ais/v7/identified2/accounts/{{account_resource_Id}}/balances",
-							"protocol": "https",
+							"raw": "{{baseUri}}/accounts/{{account_resource_Id}}/balances",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUri}}"
 							],
 							"path": [
-								"ais",
-								"v7",
-								"identified2",
 								"accounts",
 								"{{account_resource_Id}}",
 								"balances"
@@ -1461,17 +1452,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2{{transactions_href}}",
-							"protocol": "https",
+							"raw": "{{baseUri}}{{transactions_href}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
-							],
-							"path": [
-								"ais",
-								"v6",
-								"identified2{{transactions_href}}"
+								"{{baseUri}}{{transactions_href}}"
 							]
 						}
 					},
@@ -1580,17 +1563,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2/accounts/{{account_resource_Id}}/transactions/{{transaction_id}}",
-							"protocol": "https",
+							"raw": "{{baseUri}}/accounts/{{account_resource_Id}}/transactions/{{transaction_id}}",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUri}}"
 							],
 							"path": [
-								"ais",
-								"v6",
-								"identified2",
 								"accounts",
 								"{{account_resource_Id}}",
 								"transactions",
