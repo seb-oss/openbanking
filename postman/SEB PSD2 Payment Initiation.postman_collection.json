@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0c0ef3c3-26d5-44ff-9811-ce0c06abb8d5",
+		"_postman_id": "8118f569-9b4d-4e8a-b4d7-ec2ea8793e6f",
 		"name": "SEB PSD2 Payment Initiation",
 		"description": "StartFragment\n\nThe PSD2 payment initiation product provides seamless and efficient payment functionalities to enhance your payment services.\n\nEndFragment  \n\nSEB Developer Portal documentation:  \n[https://developer.sebgroup.com/products/psd2-payment-initiation](https://developer.sebgroup.com/products/psd2-payment-initiation)\n\nGithub postman information:  \n[openbanking/postman at master · sebgroup/openbanking · GitHub](https://desktop.postman.com/?desktopVersion=9.22.2&userId=6900617&teamId=314386)\n\nEndFragment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -386,13 +386,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Expect status OK\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});\r",
 											"\r",
-											"var jsonData = JSON.parse(responseBody);\r",
-											"\r",
-											"postman.setEnvironmentVariable(\"autostart_token\", jsonData.autostart_token);"
+											"if(responseBody ) {\r",
+											"  var jsonData = JSON.parse(responseBody);\r",
+											"  postman.setEnvironmentVariable(\"autostart_token\", jsonData.autostart_token);\r",
+											"};\r",
+											" "
 										],
 										"type": "text/javascript"
 									}
@@ -973,6 +972,16 @@
 				{
 					"name": "Lists templates that correspond with available payment products",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -3850,6 +3859,16 @@
 								{
 									"name": "Creates a payment initiation",
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{access_token}}",
+													"type": "string"
+												}
+											]
+										},
 										"method": "POST",
 										"header": [
 											{
@@ -5756,6 +5775,16 @@
 						{
 							"name": "Starts a multiple payment authentication procedure for the end customer. Creates a signing basket containing payment ids in the request body.",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
