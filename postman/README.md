@@ -33,8 +33,9 @@ You need to have your own sandbox credentials to test this collection against ou
  
 4. In the top right corner of postman, click the environment selector and select 'SEB PSD2 Sandbox'. 
 
-Now you are ready to test.
- 
+###  Step 4. Test PSD2 APIs with sandbox
+1. Use authorization to collect your access token.
+2. Call the API with your access token.
 
 ## Authorization
 The Authorization APIs provide for an authorization & authentication mechanism for SEBs APIs. These APIs are used to obtain security tokens for protected APIs. We offer the redirect and decoupled authorization and you can test both from our sandbox.
@@ -51,7 +52,7 @@ Obtaining the authorization code is an interactive process, which requires you t
   ``` 
 You could find a uri to copy by clicking [Send] button from postman (look at the console window in the bottom)
 
-Add your **8 digits** sandbox identity number, you can find a list of available identity number from [SEB Developer Portal](https://developer.sebgroup.com/products/authorization/redirect-authorization#/authorize-get):
+Add your **8 digits** sandbox identity number, you can find a list of available identity numbers from [SEB Developer Portal](https://developer.sebgroup.com/products/authorization/redirect-authorization#/authorize-get):
 
 ![Screenshot redirect authorization](./images/authorization.png)
 
@@ -70,7 +71,7 @@ Add collected authorization code provided by the /authorize endpoint to body.
 
 ### Decoupled Authorization 
 
-1. Initiate authorization request [Send], start_mode can be "ast" or "qr". you will get "auth_req_id" as a successful response.
+1. Initiate authorization request [Send], no need to change any values. This step returns an authorization registration id: auth_req_id. You can change the preferred start_mode to "qr", where ast returns an autostarttoken (for users with Bank ID on the same device) and qr returns a qr code string.
   ``` 
     {
       "client_id": "{{clientId}}",
@@ -79,7 +80,7 @@ Add collected authorization code provided by the /authorize endpoint to body.
       "start_mode": "ast"
     }
   ``` 
-2. Check status [Send], you will get response with status "Pending" 
+2. Check status [Send], no need to change any values. You will see response with status "Pending" 
   ``` 
     {
         "status": "PENDING",
@@ -89,7 +90,7 @@ Add collected authorization code provided by the /authorize endpoint to body.
     }   
   ``` 
 3. Bank ID simulation for sandbox  
-Add your **12 digits** sandbox identity number, you can find a list of available identity number from [SEB Developer Portal](https://developer.sebgroup.com/products/authorization/decoupled-authorization).
+Add your **12 digits** sandbox identity number, you can find a list of available identity numbers from [SEB Developer Portal](https://developer.sebgroup.com/products/authorization/decoupled-authorization).
 Response code 204 No Content for successful login.
 
 ![Screenshot authorization mock login](./images/authorization_mock_login.png)
