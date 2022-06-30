@@ -114,7 +114,8 @@ Response code 204 No Content for successful login.
   ``` 
 5. [POST] Retrieve access token [Send], no need to change any values.
 
-6. Use the access token as bear
+6. Use the access token as bearer token
+![Screenshot bearer token](./images/bearer_token.png)
 
 Read more [Decoupled Authorization step by step guide](https://developer.sebgroup.com/products/authorization/decoupled-authorization) 
 
