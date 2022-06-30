@@ -1,0 +1,1237 @@
+{
+	"info": {
+		"_postman_id": "757cbf9b-466b-4690-84df-b8f74d7c871d",
+		"name": "SEB PSD2 Corporate Card Accounts v1.1",
+		"description": "Lists card accounts for credit cards and charge cards but not debit cards.\n\nDeveloper Portal documentation:  \n[SEB Developer Portal (sebgroup.com)](https://developer.sebgroup.com/products/psd2-branded-card-accounts)\n\nGithub postman information:  \n[openbanking/postman at master · sebgroup/openbanking · GitHub](https://github.com/sebgroup/openbanking/tree/master/postman)\n\nBranded Card Authorization:  \nTo collect your bearer token, add your clientId, clientSecret & redirectUri in Variables tab\n\nwhere to find brandedId:  \n[openbanking/brandedcards at master · sebgroup/openbanking · GitHub](https://github.com/sebgroup/openbanking/tree/master/brandedcards)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6900617"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Request approval for an Authorization Code",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.cookies.clear();"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.text();\r",
+									"var base = '<base href=\"https://api-sandbox.sebgroup.com/mga/sps/\">\"';\r",
+									"var response1 = response.replace('/mga/sps', '');\r",
+									"var template = response1.replace('<head>', '<head>' + base);\r",
+									"pm.visualizer.set(template);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/html"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrlAuth}}/authorize?client_id={{clientId}}&scope={{scope}}&redirect_uri={{redirectUri}}&response_type=code&state=&brandid={{brandId}}",
+							"host": [
+								"{{baseUrlAuth}}"
+							],
+							"path": [
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "{{clientId}}",
+									"description": "(Required) Client ID of the application requesting the authorization grant. This should be the Client ID obtained from SEB or listed under Apps in the Developer Portal."
+								},
+								{
+									"key": "scope",
+									"value": "{{scope}}",
+									"description": "(Required) The associated scopes requested with the authorization grant. Multiple scopes are whitespace delimited e.g., _accounts payments loans_"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirectUri}}",
+									"description": "(Required) The URI of the application requesting the authorization grant. is requesting this code or token to be redirected to"
+								},
+								{
+									"key": "response_type",
+									"value": "code",
+									"description": "(Required) The type of credentials returned in response to the authorization grant request. Currently only supports *code*."
+								},
+								{
+									"key": "state",
+									"value": "",
+									"description": "State information submitted with the authorization grant request. This data is optional and will be returned along with the authorization grant code."
+								},
+								{
+									"key": "brandid",
+									"value": "{{brandId}}",
+									"description": "(Required) The brand id of the card for the requested authorization."
+								},
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Requests a customers consent to be issued an authorization grant for access to customer owned data. This request will redirect the user to login and approve the request for the given combination of scopes and client_id. This will generate and send a one time Authorization Code to the redirect_url according to OAuth2 specifications."
+					},
+					"response": [
+						{
+							"name": "The interactive consent form for the customer.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/ais/v1/identified4/branded-card-accounts/authorize?client_id=esse elit&scope=esse elit&redirect_uri=esse elit&response_type=esse elit&state=esse elit&brandid=esse elit",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"ais",
+										"v1",
+										"identified4",
+										"branded-card-accounts",
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "esse elit"
+										},
+										{
+											"key": "scope",
+											"value": "esse elit"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "esse elit"
+										},
+										{
+											"key": "response_type",
+											"value": "esse elit"
+										},
+										{
+											"key": "state",
+											"value": "esse elit"
+										},
+										{
+											"key": "brandid",
+											"value": "esse elit"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "The consent request is invalid.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/authorize?client_id=esse elit&scope=esse elit&redirect_uri=esse elit&response_type=esse elit&state=esse elit&brandid=esse elit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "esse elit"
+										},
+										{
+											"key": "scope",
+											"value": "esse elit"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "esse elit"
+										},
+										{
+											"key": "response_type",
+											"value": "esse elit"
+										},
+										{
+											"key": "state",
+											"value": "esse elit"
+										},
+										{
+											"key": "brandid",
+											"value": "esse elit"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/html"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Currently unable to process the consent request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/authorize?client_id=esse elit&scope=esse elit&redirect_uri=esse elit&response_type=esse elit&state=esse elit&brandid=esse elit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "esse elit"
+										},
+										{
+											"key": "scope",
+											"value": "esse elit"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "esse elit"
+										},
+										{
+											"key": "response_type",
+											"value": "esse elit"
+										},
+										{
+											"key": "state",
+											"value": "esse elit"
+										},
+										{
+											"key": "brandid",
+											"value": "esse elit"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/html"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Request Access Token for Authorization Code or Refresh Token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.cookies.clear();"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "{{clientId}}",
+									"description": "(Required) Application Client ID"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{clientSecret}}",
+									"description": "(Required) Application Client Secret"
+								},
+								{
+									"key": "code",
+									"value": "",
+									"description": "(Required) Authorization code provided by the /authorize endpoint to the redirect_uri."
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirectUri}}",
+									"description": "(Required) The URI of the application requesting the authorization grant. is requesting this code or token to be redirected to"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"description": "(Required) Type of grant to be processed."
+								},
+								{
+									"key": "scope",
+									"value": "{{scope}}",
+									"description": "The optional requested scope(s) for the new access token. Must not include new scopes not originally submitted with the authorization grant request. If omitted this is treated as equal to the scopes  originally submitted with the authorization grant request"
+								},
+								{
+									"key": "refresh_token",
+									"value": "",
+									"description": "The refresh token obtained from originally submitted authorization grant request. (Required for refresh_token grant_type)"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{tokenUri}}",
+							"host": [
+								"{{tokenUri}}"
+							]
+						},
+						"description": "Allows requesting an access token following one of the flows below:\n- Authorization Code (exchange code for access token)\n- Refresh Token (exchange refresh token for a new access code)\n\nThe table below indicates the required parameters for each specific Grant Types. Empty cells indicate a parameter is ignored for that specific grant type.\n\n|        | Authorization Code  | Refresh Token |\n|---------------------|--------------------|------------|\n| __client_id__       | required           | required   |\n| __client_secret__   | required           | required   |\n| __code__            | required           |            |      \n| __redirect_uri__    | required           |            |\n| __scope__           | optional           | optional   |\n| __refresh_token__   |                    | required   |\n"
+					},
+					"response": [
+						{
+							"name": "json document containing token, etc.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "in ipsum anim",
+											"description": "(Required) Application Client ID"
+										},
+										{
+											"key": "client_secret",
+											"value": "sint non",
+											"description": "(Required) Application Client Secret"
+										},
+										{
+											"key": "code",
+											"value": "commodo aliquip",
+											"description": "(Required) Authorization code provided by the /authorize endpoint to the redirect_uri."
+										},
+										{
+											"key": "redirect_uri",
+											"value": "",
+											"description": "(Required) The URI of the application requesting the authorization grant. is requesting this code or token to be redirected to"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"description": "(Required) Type of grant to be processed."
+										},
+										{
+											"key": "scope",
+											"value": "reprehenderit esse ",
+											"description": "The optional requested scope(s) for the new access token. Must not include new scopes not originally submitted with the authorization grant request. If omitted this is treated as equal to the scopes  originally submitted with the authorization grant request"
+										},
+										{
+											"key": "refresh_token",
+											"value": "do nulla laborum dolore",
+											"description": "The refresh token obtained from originally submitted authorization grant request. (Required for refresh_token grant_type)"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/ais/v1/identified4/branded-card-accounts/token",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"ais",
+										"v1",
+										"identified4",
+										"branded-card-accounts",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"token_type\": \"l\",\n  \"access_token\": \"ipsum nisi id\",\n  \"expires_in\": -79925105,\n  \"consented_on\": \"adipisicing ni\",\n  \"refresh_token\": \"dolor\",\n  \"refresh_token_expires_in\": \"mollit\",\n  \"scope\": \"minim consequat sunt occaecat fugiat\"\n}"
+						},
+						{
+							"name": "The token request is invalid.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "in ipsum anim",
+											"description": "(Required) Application Client ID"
+										},
+										{
+											"key": "client_secret",
+											"value": "sint non",
+											"description": "(Required) Application Client Secret"
+										},
+										{
+											"key": "code",
+											"value": "commodo aliquip",
+											"description": "(Required) Authorization code provided by the /authorize endpoint to the redirect_uri."
+										},
+										{
+											"key": "redirect_uri",
+											"value": "",
+											"description": "(Required) The URI of the application requesting the authorization grant. is requesting this code or token to be redirected to"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"description": "(Required) Type of grant to be processed."
+										},
+										{
+											"key": "scope",
+											"value": "reprehenderit esse ",
+											"description": "The optional requested scope(s) for the new access token. Must not include new scopes not originally submitted with the authorization grant request. If omitted this is treated as equal to the scopes  originally submitted with the authorization grant request"
+										},
+										{
+											"key": "refresh_token",
+											"value": "do nulla laborum dolore",
+											"description": "The refresh token obtained from originally submitted authorization grant request. (Required for refresh_token grant_type)"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/token",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"token"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"title\": \"qui dolor veniam Ut\",\n  \"detail\": \"cillum\",\n  \"instance\": \"ex nulla culpa laborum\",\n  \"status\": 9764305,\n  \"type\": \"tempor Ut nisi\"\n}"
+						},
+						{
+							"name": "Currently unable to process the token request.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "in ipsum anim",
+											"description": "(Required) Application Client ID"
+										},
+										{
+											"key": "client_secret",
+											"value": "sint non",
+											"description": "(Required) Application Client Secret"
+										},
+										{
+											"key": "code",
+											"value": "commodo aliquip",
+											"description": "(Required) Authorization code provided by the /authorize endpoint to the redirect_uri."
+										},
+										{
+											"key": "redirect_uri",
+											"value": "",
+											"description": "(Required) The URI of the application requesting the authorization grant. is requesting this code or token to be redirected to"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"description": "(Required) Type of grant to be processed."
+										},
+										{
+											"key": "scope",
+											"value": "reprehenderit esse ",
+											"description": "The optional requested scope(s) for the new access token. Must not include new scopes not originally submitted with the authorization grant request. If omitted this is treated as equal to the scopes  originally submitted with the authorization grant request"
+										},
+										{
+											"key": "refresh_token",
+											"value": "do nulla laborum dolore",
+											"description": "The refresh token obtained from originally submitted authorization grant request. (Required for refresh_token grant_type)"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/token",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"token"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"title\": \"qui dolor veniam Ut\",\n  \"detail\": \"cillum\",\n  \"instance\": \"ex nulla culpa laborum\",\n  \"status\": 9764305,\n  \"type\": \"tempor Ut nisi\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Corporate Card Accounts",
+			"item": [
+				{
+					"name": "Returns a list of user’s corporate card accounts.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.cookies.clear();"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}",
+							"host": [
+								"{{baseUrl}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"corporateCardAccounts\": [\n    {\n      \"name\": \"40141155561474\",\n      \"product\": \"SAS EuroBonus World MasterCard\",\n      \"resourceId\": \"Card Account Identifier\",\n      \"usage\": \"SAS EuroBonus World MasterCard\"\n    },\n    {\n      \"name\": \"40141155561474\",\n      \"product\": \"SAS EuroBonus World MasterCard\",\n      \"resourceId\": \"Card Account Identifier\",\n      \"usage\": \"SAS EuroBonus World MasterCard\"\n    }\n  ],\n  \"error\": {\n    \"correlationId\": \"veniam minim\",\n    \"developerMessage\": \"occaecat ea enim laboris\",\n    \"errorAttribute\": \"aliquip ex\",\n    \"errorCode\": \"dolore\",\n    \"moreInformation\": \"ipsum sit aliquip consequat\",\n    \"supportID\": \"velit Excepte\",\n    \"userMessage\": \"minim nisi enim do\"\n  }\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "corporateCardAccounts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.cookies.clear();"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/:accountId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								":accountId"
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "{{accountId}}",
+									"description": "(Required) accountId"
+								}
+							]
+						},
+						"description": "Returns a single corporate card account with details."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:accountId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":accountId"
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "76350251",
+											"description": "(Required) accountId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"cardAccountDetailed\": {\n    \"balances\": [\n      {\n        \"balanceAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"balanceType\": \"expected/interimAvaliable/nonInvoiced\",\n        \"creditLimitincluded\": false\n      },\n      {\n        \"balanceAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"balanceType\": \"expected/interimAvaliable/nonInvoiced\",\n        \"creditLimitincluded\": false\n      }\n    ],\n    \"currency\": \"EUR, GBP, USD\",\n    \"name\": \"40141155561474\",\n    \"product\": \"SAS EuroBonus World MasterCard\",\n    \"resourceId\": \"Card Account Identifier\",\n    \"status\": \"blocked\",\n    \"usage\": \"SAS EuroBonus World MasterCard\",\n    \"creditLimit\": {\n      \"amount\": 250,\n      \"currency\": \"SEK/USD\"\n    }\n  },\n  \"error\": {\n    \"correlationId\": \"fugiat pariatur cillum aute\",\n    \"developerMessage\": \"aliqua eu\",\n    \"errorAttribute\": \"s\",\n    \"errorCode\": \"quis qui incididunt\",\n    \"moreInformation\": \"dolor\",\n    \"supportID\": \"pariatur dolor reprehenderit consequat\",\n    \"userMessage\": \"sunt pariatur\"\n  }\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:accountId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":accountId"
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "76350251",
+											"description": "(Required) accountId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:accountId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":accountId"
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "76350251",
+											"description": "(Required) accountId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:accountId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":accountId"
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "76350251",
+											"description": "(Required) accountId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "cardAccountsTransactions",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.cookies.clear();"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/:accountId/transactions?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								":accountId",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}",
+									"description": "dateFrom"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}",
+									"description": "dateTo"
+								}
+							],
+							"variable": [
+								{
+									"key": "accountId",
+									"value": "{{accountId}}",
+									"description": "(Required) accountId"
+								}
+							]
+						},
+						"description": "Returns a list of transactions for the specified corporate card account."
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:accountId/transactions?dateFrom=ut sint voluptate exercitation&dateTo=ut sint voluptate exercitation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":accountId",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "dateFrom",
+											"value": "ut sint voluptate exercitation"
+										},
+										{
+											"key": "dateTo",
+											"value": "ut sint voluptate exercitation"
+										}
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "ut sint voluptate exercitation",
+											"description": "(Required) accountId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"error\": {\n    \"correlationId\": \"et commodo velit tempor\",\n    \"developerMessage\": \"est fugiat sit commodo dolor\",\n    \"errorAttribute\": \"deserunt in officia\",\n    \"errorCode\": \"fugiat eiusmod pariatur\",\n    \"moreInformation\": \"non laboris\",\n    \"supportID\": \"ut ipsum\",\n    \"userMessage\": \"quis\"\n  },\n  \"transactions\": {\n    \"booked\": [\n      {\n        \"bookingDate\": \"2019-07-26\",\n        \"cardTransactionId\": \"123456789012\",\n        \"invoiced\": false,\n        \"originalAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"proprietaryBankTransactionCode\": \"PAYMENT\",\n        \"transactionAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"transactionDetails\": \"My Store\",\n        \"valueDate\": \"2019-07-26\",\n        \"cardAcceptorCity\": \"Stockholm/Oslo/Helsingfors\",\n        \"cardAcceptorCountryName\": \"Code for name of country where transaction occured. Code is according to ISO 3166-1 alpha-2.\",\n        \"currencyMarkupPercentage\": 2,\n        \"exchangeRate\": {\n          \"currencyFrom\": \"USD\",\n          \"currencyTo\": \"SEK\",\n          \"rate\": 8,\n          \"rateDate\": \"2019-07-26\"\n        },\n        \"maskedPan\": \"525412******3241\",\n        \"nameOnCard\": \"ALVIN OTTOSSON\"\n      },\n      {\n        \"bookingDate\": \"2019-07-26\",\n        \"cardTransactionId\": \"123456789012\",\n        \"invoiced\": false,\n        \"originalAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"proprietaryBankTransactionCode\": \"UNKNOWN\",\n        \"transactionAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"transactionDetails\": \"My Store\",\n        \"valueDate\": \"2019-07-26\",\n        \"cardAcceptorCity\": \"Stockholm/Oslo/Helsingfors\",\n        \"cardAcceptorCountryName\": \"Code for name of country where transaction occured. Code is according to ISO 3166-1 alpha-2.\",\n        \"currencyMarkupPercentage\": 2,\n        \"exchangeRate\": {\n          \"currencyFrom\": \"USD\",\n          \"currencyTo\": \"SEK\",\n          \"rate\": 8,\n          \"rateDate\": \"2019-07-26\"\n        },\n        \"maskedPan\": \"525412******3241\",\n        \"nameOnCard\": \"ALVIN OTTOSSON\"\n      }\n    ],\n    \"pending\": [\n      {\n        \"bookingDate\": \"2019-07-26\",\n        \"cardTransactionId\": \"123456789012\",\n        \"invoiced\": false,\n        \"originalAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"proprietaryBankTransactionCode\": \"DISCOUNT\",\n        \"transactionAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"transactionDetails\": \"My Store\",\n        \"valueDate\": \"2019-07-26\",\n        \"cardAcceptorCity\": \"Stockholm/Oslo/Helsingfors\",\n        \"cardAcceptorCountryName\": \"Code for name of country where transaction occured. Code is according to ISO 3166-1 alpha-2.\",\n        \"currencyMarkupPercentage\": 2,\n        \"exchangeRate\": {\n          \"currencyFrom\": \"USD\",\n          \"currencyTo\": \"SEK\",\n          \"rate\": 8,\n          \"rateDate\": \"2019-07-26\"\n        },\n        \"maskedPan\": \"525412******3241\",\n        \"nameOnCard\": \"ALVIN OTTOSSON\"\n      },\n      {\n        \"bookingDate\": \"2019-07-26\",\n        \"cardTransactionId\": \"123456789012\",\n        \"invoiced\": false,\n        \"originalAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"proprietaryBankTransactionCode\": \"FEE\",\n        \"transactionAmount\": {\n          \"amount\": 250,\n          \"currency\": \"SEK/USD\"\n        },\n        \"transactionDetails\": \"My Store\",\n        \"valueDate\": \"2019-07-26\",\n        \"cardAcceptorCity\": \"Stockholm/Oslo/Helsingfors\",\n        \"cardAcceptorCountryName\": \"Code for name of country where transaction occured. Code is according to ISO 3166-1 alpha-2.\",\n        \"currencyMarkupPercentage\": 2,\n        \"exchangeRate\": {\n          \"currencyFrom\": \"USD\",\n          \"currencyTo\": \"SEK\",\n          \"rate\": 8,\n          \"rateDate\": \"2019-07-26\"\n        },\n        \"maskedPan\": \"525412******3241\",\n        \"nameOnCard\": \"ALVIN OTTOSSON\"\n      }\n    ]\n  }\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:accountId/transactions?dateFrom=ut sint voluptate exercitation&dateTo=ut sint voluptate exercitation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":accountId",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "dateFrom",
+											"value": "ut sint voluptate exercitation"
+										},
+										{
+											"key": "dateTo",
+											"value": "ut sint voluptate exercitation"
+										}
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "ut sint voluptate exercitation",
+											"description": "(Required) accountId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:accountId/transactions?dateFrom=ut sint voluptate exercitation&dateTo=ut sint voluptate exercitation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":accountId",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "dateFrom",
+											"value": "ut sint voluptate exercitation"
+										},
+										{
+											"key": "dateTo",
+											"value": "ut sint voluptate exercitation"
+										}
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "ut sint voluptate exercitation",
+											"description": "(Required) accountId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/:accountId/transactions?dateFrom=ut sint voluptate exercitation&dateTo=ut sint voluptate exercitation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										":accountId",
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "dateFrom",
+											"value": "ut sint voluptate exercitation"
+										},
+										{
+											"key": "dateTo",
+											"value": "ut sint voluptate exercitation"
+										}
+									],
+									"variable": [
+										{
+											"key": "accountId",
+											"value": "ut sint voluptate exercitation",
+											"description": "(Required) accountId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api-sandbox.sebgroup.com/ais/v1/identified4/corporate-card-accounts",
+			"type": "string"
+		},
+		{
+			"key": "authorizationUri",
+			"value": "https://api-sandbox.sebgroup.com/ais/v1/identified4/branded-card-accounts",
+			"type": "default"
+		},
+		{
+			"key": "tokenUri",
+			"value": "https://api-sandbox.sebgroup.com/mga/sps/oauth/oauth20/token",
+			"type": "default"
+		},
+		{
+			"key": "clientId",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "clientSecret",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "redirectUri",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "scope",
+			"value": "psd2_accounts",
+			"type": "default"
+		},
+		{
+			"key": "brandId",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "accountId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "dateFrom",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "dateTo",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
