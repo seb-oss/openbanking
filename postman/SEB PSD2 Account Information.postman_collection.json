@@ -1,0 +1,1943 @@
+{
+	"info": {
+		"_postman_id": "f29a7d73-2f0b-4386-998c-8f3cb854a57e",
+		"name": "SEB PSD2 Account Information",
+		"description": "StartFragment\n\nThe PSD2 account information product provides easy integration with Swedish customers' Transaction and Card accounts at SEB.\n\nEndFragment\n\nSEB Developer Portal documentation:  \n[https://developer.sebgroup.com/products/psd2-account-information](https://developer.sebgroup.com/products/psd2-account-information)\n\nGithub postman information:  \n[openbanking/postman at master · sebgroup/openbanking · GitHub](https://github.com/sebgroup/openbanking/tree/master/postman)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6900617"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Redirect Authorization",
+					"item": [
+						{
+							"name": "Request approval for an Authorization Code",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.cookies.clear();"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/html"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"url": {
+									"raw": "{{authorizationUri}}?scope={{scope}}&response_type=code&redirect_uri={{redirectUri}}&client_id={{clientId}}",
+									"host": [
+										"{{authorizationUri}}"
+									],
+									"query": [
+										{
+											"key": "scope",
+											"value": "{{scope}}"
+										},
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "{{redirectUri}}"
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"disabled": true
+										},
+										{
+											"key": "client_id",
+											"value": "{{clientId}}"
+										}
+									]
+								},
+								"description": "Requests a customers consent to be issued an authorization grant for access to customer owned data. This request will redirect the user to login and approve the request for the given combination of scopes and client_id. This will generate and send a one time Authorization Code to the redirect_url according to OAuth2 specifications."
+							},
+							"response": []
+						},
+						{
+							"name": "Request Access Token for Authorization Code or Refresh Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);\r",
+											"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.cookies.clear();"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "{{clientId}}",
+											"description": "(Required) Application Client ID",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{clientSecret}}",
+											"description": "(Required) Application Client Secret",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "sJb8uKw2qukvd9i9eXCMYMRieDTVBR",
+											"description": "(Required) Authorization code provided by the /authorize endpoint to the redirect_uri.",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "{{redirectUri}}",
+											"description": "(Required) The URI of the application requesting the authorization grant. is requesting this code or token to be redirected to",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"description": "(Required) Type of grant to be processed.",
+											"type": "text"
+										},
+										{
+											"key": "refresh_token",
+											"value": "",
+											"description": "The refresh token obtained from originally submitted authorization grant request. (Required for refresh_token grant_type)",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{tokenUri}}",
+									"host": [
+										"{{tokenUri}}"
+									]
+								},
+								"description": "Allows requesting an access token following one of the flows below:\n- Authorization Code (exchange code for access token)\n- Refresh Token (exchange refresh token for a new access code)\n\nThe table below indicates the required parameters for each specific Grant Types. Empty cells indicate a parameter is ignored for that specific grant type.\n\n|        | Authorization Code  | Refresh Token |\n|---------------------|--------------------|------------|\n| __client_id__       | required           | required   |\n| __client_secret__   | required           | required   |\n| __code__            | required           |            |      \n| __redirect_uri__    | required           |            |\n| __scope__           | optional           | optional   |\n| __refresh_token__   |                    | required   |\n"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Decoupled Authorization",
+					"item": [
+						{
+							"name": "Initiate authorization request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"auth_req_id\", jsonData.auth_req_id);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.cookies.clear();"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"client_id\": \"{{clientId}}\",\n  \"lang\": \"en\",\n  \"scope\": \"{{scope}}\",\n  \"start_mode\": \"ast\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/auth/v3/authorizations",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"auth",
+										"v3",
+										"authorizations"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Successful operation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"eiusmod esse consequat dolor\",\n  \"lang\": \"en\",\n  \"login_hint\": \"19121212NNNN\",\n  \"scope\": \"psd2_accounts psd2_payments\",\n  \"start_mode\": \"qr\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/authorizations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"auth_req_id\": \"incididunt veni\"\n}"
+								},
+								{
+									"name": "Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"eiusmod esse consequat dolor\",\n  \"lang\": \"en\",\n  \"login_hint\": \"19121212NNNN\",\n  \"scope\": \"psd2_accounts psd2_payments\",\n  \"start_mode\": \"qr\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/authorizations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								},
+								{
+									"name": "Input error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"eiusmod esse consequat dolor\",\n  \"lang\": \"en\",\n  \"login_hint\": \"19121212NNNN\",\n  \"scope\": \"psd2_accounts psd2_payments\",\n  \"start_mode\": \"qr\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/authorizations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations"
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								},
+								{
+									"name": "Internal server error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"eiusmod esse consequat dolor\",\n  \"lang\": \"en\",\n  \"login_hint\": \"19121212NNNN\",\n  \"scope\": \"psd2_accounts psd2_payments\",\n  \"start_mode\": \"qr\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/authorizations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Check status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"autostart_token\", jsonData.autostart_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/auth/v3/authorizations/{{auth_req_id}}",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"auth",
+										"v3",
+										"authorizations",
+										"{{auth_req_id}}"
+									]
+								},
+								"description": "Polls for status of the ongoing authorizationId"
+							},
+							"response": [
+								{
+									"name": "Successful operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/authorizations/:authorizationId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations",
+												":authorizationId"
+											],
+											"variable": [
+												{
+													"key": "authorizationId",
+													"value": "veniam nostrud sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"autostart_token\": \"laborum consectetur\",\n  \"hint_code\": \"nulla voluptate adipisicing\",\n  \"poll_delay\": 500,\n  \"qr_token\": \"culpa reprehenderit\",\n  \"status\": \"FAILED\"\n}"
+								},
+								{
+									"name": "Invalid input",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/authorizations/:authorizationId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations",
+												":authorizationId"
+											],
+											"variable": [
+												{
+													"key": "authorizationId",
+													"value": "veniam nostrud sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								},
+								{
+									"name": "Invalid authorization request id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/authorizations/:authorizationId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations",
+												":authorizationId"
+											],
+											"variable": [
+												{
+													"key": "authorizationId",
+													"value": "veniam nostrud sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								},
+								{
+									"name": "Input error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/authorizations/:authorizationId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations",
+												":authorizationId"
+											],
+											"variable": [
+												{
+													"key": "authorizationId",
+													"value": "veniam nostrud sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								},
+								{
+									"name": "Too many requests",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/authorizations/:authorizationId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations",
+												":authorizationId"
+											],
+											"variable": [
+												{
+													"key": "authorizationId",
+													"value": "veniam nostrud sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Too Many Requests",
+									"code": 429,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								},
+								{
+									"name": "Internal server error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/authorizations/:authorizationId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authorizations",
+												":authorizationId"
+											],
+											"variable": [
+												{
+													"key": "authorizationId",
+													"value": "veniam nostrud sit",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Bank ID simulation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"autostart_token\", jsonData.autostart_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"personal_identity_number\": \"8811215477\",\r\n  \"start_token\": \"{{autostart_token}}\"\r\n}"
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/open/sb/auth/mock/v1/login",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"open",
+										"sb",
+										"auth",
+										"mock",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve access/refresh token for an authorization request id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Expect status OK\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);\r",
+											"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"client_id\": \"{{clientId}}\",\n  \"client_secret\": \"{{clientSecret}}\",\n  \"auth_req_id\": \"{{auth_req_id}}\",\n  \"redirect_uri\":\"{{redirectUri}}\" \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-sandbox.sebgroup.com/auth/v3/tokens",
+									"protocol": "https",
+									"host": [
+										"api-sandbox",
+										"sebgroup",
+										"com"
+									],
+									"path": [
+										"auth",
+										"v3",
+										"tokens"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Successful operation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"veniam aliquip minim ea\",\n  \"client_secret\": \"sed veniam deserunt laborum\",\n  \"auth_req_id\": \"AUTH-defe3c28-742c-428b-b933-fb78cf5aed95\",\n  \"redirect_uri\": \"https://seb.se/\",\n  \"refresh_token\": \"8Ad37mvU7tVmaJak5vXBdZ9SIj8aYhVWpgeK4fXh\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tokens",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"access_token\": \"Excepteur elit\",\n  \"expires_in\": -24800026,\n  \"refresh_token\": \"et in Lorem\",\n  \"scope\": \"ut v\",\n  \"token_type\": \"veniam irure\"\n}"
+								},
+								{
+									"name": "Invalid input",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"veniam aliquip minim ea\",\n  \"client_secret\": \"sed veniam deserunt laborum\",\n  \"auth_req_id\": \"AUTH-defe3c28-742c-428b-b933-fb78cf5aed95\",\n  \"redirect_uri\": \"https://seb.se/\",\n  \"refresh_token\": \"8Ad37mvU7tVmaJak5vXBdZ9SIj8aYhVWpgeK4fXh\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tokens",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"error\": \"invalid_request\",\n  \"error_descriptions\": \"irure magna proident\"\n}"
+								},
+								{
+									"name": "Invalid authorization request id",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"veniam aliquip minim ea\",\n  \"client_secret\": \"sed veniam deserunt laborum\",\n  \"auth_req_id\": \"AUTH-defe3c28-742c-428b-b933-fb78cf5aed95\",\n  \"redirect_uri\": \"https://seb.se/\",\n  \"refresh_token\": \"8Ad37mvU7tVmaJak5vXBdZ9SIj8aYhVWpgeK4fXh\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tokens",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								},
+								{
+									"name": "Authorization request is in the wrong state",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"veniam aliquip minim ea\",\n  \"client_secret\": \"sed veniam deserunt laborum\",\n  \"auth_req_id\": \"AUTH-defe3c28-742c-428b-b933-fb78cf5aed95\",\n  \"redirect_uri\": \"https://seb.se/\",\n  \"refresh_token\": \"8Ad37mvU7tVmaJak5vXBdZ9SIj8aYhVWpgeK4fXh\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tokens",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens"
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								},
+								{
+									"name": "Input error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"veniam aliquip minim ea\",\n  \"client_secret\": \"sed veniam deserunt laborum\",\n  \"auth_req_id\": \"AUTH-defe3c28-742c-428b-b933-fb78cf5aed95\",\n  \"redirect_uri\": \"https://seb.se/\",\n  \"refresh_token\": \"8Ad37mvU7tVmaJak5vXBdZ9SIj8aYhVWpgeK4fXh\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tokens",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens"
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								},
+								{
+									"name": "Internal server error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"client_id\": \"veniam aliquip minim ea\",\n  \"client_secret\": \"sed veniam deserunt laborum\",\n  \"auth_req_id\": \"AUTH-defe3c28-742c-428b-b933-fb78cf5aed95\",\n  \"redirect_uri\": \"https://seb.se/\",\n  \"refresh_token\": \"8Ad37mvU7tVmaJak5vXBdZ9SIj8aYhVWpgeK4fXh\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/tokens",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"tokens"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": 404,\n  \"title\": \"Not found\",\n  \"detail\": \"laboris enim mollit\",\n  \"type\": \"magna laborum\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Account Information v7.0",
+			"item": [
+				{
+					"name": "Get Accounts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"account_resource_Id\", jsonData.accounts[0].resourceId);",
+									"postman.setEnvironmentVariable(\"account_details_href\", jsonData.accounts[0]._links.transactions.href);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": " Bearer 4nZQPDGimJ8PlU0TMmzW",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2/accounts",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v6",
+								"identified2",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"transactions_href\", jsonData._links.transactions.href);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v7/identified2/accounts/{{account_resource_Id}}?withBalance=true",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v7",
+								"identified2",
+								"accounts",
+								"{{account_resource_Id}}"
+							],
+							"query": [
+								{
+									"key": "withBalance",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balances",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v7/identified2/accounts/{{account_resource_Id}}/balances",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v7",
+								"identified2",
+								"accounts",
+								"{{account_resource_Id}}",
+								"balances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Transactions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"transaction_id\", jsonData.transactions.booked.find(x => !!x._links).transactionId);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2{{transactions_href}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v6",
+								"identified2{{transactions_href}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Transaction Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2/accounts/{{account_resource_Id}}/transactions/{{transaction_id}}",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v6",
+								"identified2",
+								"accounts",
+								"{{account_resource_Id}}",
+								"transactions",
+								"{{transaction_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Card Accounts v2.1",
+			"item": [
+				{
+					"name": "Card Accounts - List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"card_account_resource_Id\", jsonData.cardAccounts[0].resourceId);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v2/identified2/card-accounts/",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v2",
+								"identified2",
+								"card-accounts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Card Accounts - Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Expect status OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.test(\"Expected transactions\", function() {",
+									"   pm.expect(jsonData.transactions.booked.length).to.eql(4);",
+									"   pm.expect(jsonData.transactions.pending.length).to.eql(4);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Request-ID",
+								"value": "{{$randomUUID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": " Bearer {{AccessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Corporate-Id",
+								"value": "{{PSU-Corporate-Id}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-IP-Address",
+								"value": "{{$randomIP}}",
+								"type": "text"
+							},
+							{
+								"key": "PSU-IP-Port",
+								"value": "{{PSU-IP-Port}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-User-Agent",
+								"value": "{{PSU-User-Agent}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Geo-Location",
+								"value": "{{PSU-Geo-Location}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept",
+								"value": "{{PSU-Accept}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Charset",
+								"value": "{{PSU-Accept-Charset}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Encoding",
+								"value": "{{PSU-Accept-Encoding}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Accept-Language",
+								"value": "{{PSU-Accept-Language}}{",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Http-Method",
+								"value": "{{PSU-Http-Method}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "PSU-Device-ID",
+								"value": "{{PSU-Device-ID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api-sandbox.sebgroup.com/ais/v2/identified2/card-accounts/{{card_account_resource_Id}}/transactions?dateFrom={{RandomFutureDate}}&dateTo={{RandomFutureDate}}&bookingStatus=booked",
+							"protocol": "https",
+							"host": [
+								"api-sandbox",
+								"sebgroup",
+								"com"
+							],
+							"path": [
+								"ais",
+								"v2",
+								"identified2",
+								"card-accounts",
+								"{{card_account_resource_Id}}",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{RandomFutureDate}}"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{RandomFutureDate}}"
+								},
+								{
+									"key": "bookingStatus",
+									"value": "booked"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api-sandbox.sebgroup.com/ais/v7/identified2",
+			"type": "string"
+		},
+		{
+			"key": "authorizationUri",
+			"value": "https://api-sandbox.sebgroup.com/mga/sps/oauth/oauth20/authorize",
+			"type": "string"
+		},
+		{
+			"key": "tokenUri",
+			"value": "https://api-sandbox.sebgroup.com/mga/sps/oauth/oauth20/token",
+			"type": "string"
+		},
+		{
+			"key": "clientId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "clientSecret",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "redirectUri",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "scope",
+			"value": "psd2_accounts",
+			"type": "string"
+		},
+		{
+			"key": "state",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "auth_req_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
