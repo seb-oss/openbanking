@@ -11,8 +11,11 @@ You need to have your own sandbox credentials to test this collection against ou
 ### Step 1. Importing Collection into postman
 1. Open postman
 1. Select Import in the left navigation menu.
-1. Select the files you want to import.
-1. Select Import to bring your data into postman.
+1. Select the files you want to import and select Import. We have 4 collections.
+ * SEB PSD2 Account Information
+ * SEB PSD2 Payment Initiation
+ * SEB PSD2 Branded Card Accounts
+ * SEB PSD2 Corporate Card Accounts 
  
 ### Step 2. Importing Environment into postman
 1. Click on the Environments tab on the left navbar of postman
@@ -30,11 +33,12 @@ You need to have your own sandbox credentials to test this collection against ou
 * redirectUri (should be same one used to create a sandbox app)
 
 ![Screenshot environment variables](./images/postman_env.png)
-4. Save. 
+4. click [Save]. 
 5. In the top right corner of postman, click the environment selector and select 'SEB PSD2 Sandbox'. 
 
 ###  Step 4. Test PSD2 APIs with sandbox
-1. Use authorization to collect your access token using Redirect or Decoupled Authorization, refer the steps below.
+1. Authorization
+Each collection includes 2 authorizations, you can choose Redirect or Decoupled authorization for your needs. Refer the steps below for instruction. 
 2. You are ready to call the API with your access token.
 
 
