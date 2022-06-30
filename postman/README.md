@@ -38,7 +38,9 @@ You need to have your own sandbox credentials to test this collection against ou
 
 ###  Step 4. Test PSD2 APIs with sandbox
 1. Authorization
-Each collection includes 2 authorizations, you can choose Redirect or Decoupled authorization for your needs. Refer the steps below for instruction. 
+
+   Each collection includes 2 authorizations, you can choose Redirect or Decoupled authorization for your needs. Refer the steps below for instruction. 
+   
 2. You are ready to call the API with your access token.
 
 
@@ -110,9 +112,9 @@ Response code 204 No Content for successful login.
         "poll_delay": 500
     }
   ``` 
-5. [POST] Retrieve access token [Send]
+5. [POST] Retrieve access token [Send], no need to change any values.
 
-6. Use the access token to access an API
+6. Use the access token as bear
 
 Read more [Decoupled Authorization step by step guide](https://developer.sebgroup.com/products/authorization/decoupled-authorization) 
 
