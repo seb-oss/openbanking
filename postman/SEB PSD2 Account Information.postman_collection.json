@@ -997,6 +997,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1083,17 +1093,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://api-sandbox.sebgroup.com/ais/v6/identified2/accounts",
-							"protocol": "https",
+							"raw": "{{baseUri}}/accounts",
 							"host": [
-								"api-sandbox",
-								"sebgroup",
-								"com"
+								"{{baseUri}}"
 							],
 							"path": [
-								"ais",
-								"v6",
-								"identified2",
 								"accounts"
 							]
 						}
@@ -1621,7 +1625,7 @@
 	],
 	"variable": [
 		{
-			"key": "baseUrl",
+			"key": "baseUri",
 			"value": "https://api-sandbox.sebgroup.com/ais/v7/identified2",
 			"type": "string"
 		},
