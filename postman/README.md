@@ -74,7 +74,7 @@ Add collected authorization code to request body as below screenshot.
 
 ### Decoupled Authorization 
 
-1. Initiate authorization request [Send], no need to change any values. This step returns an authorization registration id: auth_req_id. 
+1. [POST] Initiate authorization request [Send], no need to change any values. This step returns an authorization registration id: auth_req_id. 
   ``` 
     {
       "client_id": "{{clientId}}",
@@ -83,7 +83,7 @@ Add collected authorization code to request body as below screenshot.
       "start_mode": "ast"
     }
   ``` 
-2. Check status [Send], no need to change any values. You will see response with status "Pending" 
+2. [GET] Check status [Send], no need to change any values. You will see response with status "Pending" 
   ``` 
     {
         "status": "PENDING",
@@ -92,20 +92,20 @@ Add collected authorization code to request body as below screenshot.
         "poll_delay": 500
     }   
   ``` 
-3. Bank ID simulation for sandbox  
+3. [POST] Bank ID simulation for sandbox  
 Add your **12 digits** sandbox identity number, you can find a list of available identity numbers from [SEB Developer Portal](https://developer.sebgroup.com/products/authorization/decoupled-authorization).
 Response code 204 No Content for successful login.
 
 ![Screenshot authorization mock login](./images/authorization_mock_login.png)
  
-4. Check status [Send] again to see status
+4. [GET] Check status [Send] again to see status
   ``` 
     {
         "status": "COMPLETE",
         "poll_delay": 500
     }
   ``` 
-5. Retrieve access token [Send]
+5. [POST] Retrieve access token [Send]
 
 6. Use the access token to access an API
 
