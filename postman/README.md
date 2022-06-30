@@ -34,8 +34,9 @@ You need to have your own sandbox credentials to test this collection against ou
 5. In the top right corner of postman, click the environment selector and select 'SEB PSD2 Sandbox'. 
 
 ###  Step 4. Test PSD2 APIs with sandbox
-1. Use authorization to collect your access token.
-2. Call the API with your access token.
+1. Use authorization to collect your access token using Redirect or Decoupled Authorization, refer the steps below.
+2. You are ready to call the API with your access token.
+
 
 ## Authorization
 The Authorization APIs provide for an authorization & authentication mechanism for SEBs APIs. These APIs are used to obtain security tokens for protected APIs. We offer the redirect and decoupled authorization and you can test both from our sandbox.
@@ -112,3 +113,5 @@ Response code 204 No Content for successful login.
 Read more [Decoupled Authorization step by step guide](https://developer.sebgroup.com/products/authorization/decoupled-authorization) 
 
 Now you are ready to call SEB PSD2 APIs with your access token.
+
+
