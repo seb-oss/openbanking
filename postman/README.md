@@ -50,10 +50,10 @@ Obtaining the authorization code is an interactive process, which requires you t
   ``` 
 You could find a uri to copy by clicking [Send] button from postman 
 
-Here you can add your sandbox identity number, you can find a list of available identity number from [SEB Developer Portal](https://developer.sebgroup.com/products/authorization/redirect-authorization#/authorize-get):
+Add your sandbox identity number, you can find a list of available identity number from [SEB Developer Portal](https://developer.sebgroup.com/products/authorization/redirect-authorization#/authorize-get):
 ![Screenshot redirect authorization] (https://github.com/sebgroup/openbanking/blob/master/postman/images/authorization.png)
 
-Here you can find authorization code in your browser :
+You can find authorization code in your browser :
 ![Screenshot redirect authorization code] (https://github.com/sebgroup/openbanking/blob/master/postman/images/authorization_code.png)
 
 2. Request access token for Authorization Code or Refresh Token
