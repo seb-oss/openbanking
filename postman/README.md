@@ -26,7 +26,7 @@ You need to have your own sandbox credentials to test this collection against ou
 ### Step 3. Set your own Environment  
 1. Click on the Environments tab on the left navbar of postman
 2. Select 'SEB PSD2 Sandbox'
-3. Add your own variables for below, leave others empty. You will find below values when you create sandbox App from developer portal.  
+3. Add your own variables as below both Initial value and Current value, leave others empty. You will find below values when you create sandbox App from developer portal.  
 
 * clientId
 * clientSecret
