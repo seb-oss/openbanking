@@ -16,9 +16,9 @@ Due to no users on the corporate side, we don't have any statistics to show.
 ![private_ais][private_ais]
 
 
-[private_ais]: ./archive/2022Q3/SEB_CARD_private_ais.gif
-[private_downtime]: ./archive/2022Q3/SEB_CARD_private_downtime.gif
-[private_error]: ./archive/2022Q3/SEB_CARD_private_error.gif
-[private_uptime]: ./archive/2022Q3/SEB_CARD_private_uptime.gif
+[private_ais]: ./archive/2022Q3/SEB_CARD_private_ais.png
+[private_downtime]: ./archive/2022Q3/SEB_CARD_private_downtime.png
+[private_error]: ./archive/2022Q3/SEB_CARD_private_error.png
+[private_uptime]: ./archive/2022Q3/SEB_CARD_private_uptime.png
 
 > @ 2022 SEB Kort Bank AB
