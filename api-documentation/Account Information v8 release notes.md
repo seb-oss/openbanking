@@ -47,7 +47,7 @@
 
 | **V7** | **V8** | **Comments** |
 | --- | --- | --- |
-| `interestType`: _inherited from ledger_ | `interestType`: <code>Credit&#124;Debit&#124;Penalty&#124;CreditAdjust&#124;DebitAdjust&#124;PenaltyAdjust</code> | |
+| `interestType`: _inconsistent_ | `interestType`: <code>Credit&#124;Debit&#124;Penalty&#124;CreditAdjust&#124;DebitAdjust&#124;PenaltyAdjust</code> | |
 | `interestRateType`: <code>"Fixed&#124;FIXED"</code> | `interestRateType: "Fixed"` | |
 | `interestRateType: "ORD"` | `interestRateType: "Regular"` | |
 | `interestRateType: "Base"` | `interestRateType: "BaseRate"` | |
