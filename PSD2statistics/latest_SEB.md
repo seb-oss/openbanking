@@ -45,4 +45,4 @@ Due to no users on the corporate side, we don't have any statistics to show.
 [private_pis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_11.jpg
 [private_fcis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_12.jpg
   
-> @ 2022 SEB Kort Bank AB
+> @ 2022 SEB AB
