@@ -4,7 +4,6 @@ Publication of daily statistics on the availability and performance of the dedic
 
 The time period covered by this report is 2022-10-01 – 2022-12-31.
 
-Due to no users on the corporate side, we don't have any statistics to show. 
 
 ### Segment: Corporate - Uptime
 ![corporate_uptime][corporate_uptime]
