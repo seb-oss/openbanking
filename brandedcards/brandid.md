@@ -10,10 +10,10 @@ Accepted values for Branded Card Accouts and Corporate Card Accounts can be foun
 
 Brand | Brand ID
 ------------ | -------------
+Circle K | ckdk
 Eurocard| ecdk
 GlobeCard | gcdk
 Jyske | jydk
-Quintessentially | qudk
 SAS | sadk
 
 #### Finland
@@ -33,6 +33,7 @@ Esso | esno
 Eurocard | ecno
 Finnair | fano
 GlobeCard | gcno
+Landkreditt | lkno
 Nordic Choice Club | cono
 SAS | sano
 SEB Selected | ssno
@@ -50,9 +51,9 @@ INGO | jese
 NK | nkse
 Nordic Choice Club | cose
 Opel | opse
-Quintessentially  | quse
 SAAB | sbse
 SAS | sase
+Scandic | scse
 SJ | sjse
 Wallet | wase
 
