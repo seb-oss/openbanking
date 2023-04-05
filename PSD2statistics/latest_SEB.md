@@ -1,8 +1,8 @@
-# SEB AB – PSD2 KPI Report 2022Q4
+# SEB AB – PSD2 KPI Report 2023Q1
 
 Publication of daily statistics on the availability and performance of the dedicated interface as set out in Guidelines 2.2 and 2.3 in [Final Report on the Guidelines on the Exemption from the Contingency Mechanism Under Article 33(6) RTS on SCA & CSC](https://eba.europa.eu/sites/default/documents/files/documents/10180/2250578/4e3b9449-ecf9-4756-8006-cbbe74db6d03/Final%20Report%20on%20Guidelines%20on%20the%20exemption%20to%20the%20fall%20back.pdf?retry=1) and of the interfaces made available to [SEB](https://sebgroup.com) customers for directly accessing their payment accounts online.
 
-The time period covered by this report is 2022-10-01 – 2022-12-31.
+The time period covered by this report is 2023-01-01 – 2023-03-31.
 
 
 ### Segment: Corporate - Uptime
@@ -31,17 +31,16 @@ The time period covered by this report is 2022-10-01 – 2022-12-31.
 ![private_fcis][private_fcis]
 
 
-[corporate_uptime]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_1.jpg
-[corporate_downtime]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_2.jpg
-[corporate_error]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_3.jpg
-[corporate_ais]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_4.jpg
-[corporate_pis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_5.jpg
-[corporate_fcis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_6.jpg
-[private_uptime]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_7.jpg
-[private_downtime]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_8.jpg
-[private_error]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_9.jpg
-[private_ais]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_10.jpg
-[private_pis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_11.jpg
-[private_fcis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q4_2022_12.jpg
-  
+[corporate_uptime]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_1.jpg
+[corporate_downtime]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_2.jpg
+[corporate_error]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_3.jpg
+[corporate_ais]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_4.jpg
+[corporate_pis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_5.jpg
+[corporate_fcis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_6.jpg
+[private_uptime]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_7.jpg
+[private_downtime]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_8.jpg
+[private_error]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_9.jpg
+[private_ais]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_10.jpg
+[private_pis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_11.jpg
+[private_fcis]: ./archive/2022Q4/SEB_PSD2_KPI_Report_Q1_2023_12.jpg
 > @ 2022 Skandinaviska Enskilda Banken AB (publ)
