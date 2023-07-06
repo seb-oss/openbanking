@@ -1,4 +1,4 @@
-# SEB AB – PSD2 KPI Report 2023Q1
+# SEB AB – PSD2 KPI Report 2023Q2
 
 Publication of daily statistics on the availability and performance of the dedicated interface as set out in Guidelines 2.2 and 2.3 in [Final Report on the Guidelines on the Exemption from the Contingency Mechanism Under Article 33(6) RTS on SCA & CSC](https://eba.europa.eu/sites/default/documents/files/documents/10180/2250578/4e3b9449-ecf9-4756-8006-cbbe74db6d03/Final%20Report%20on%20Guidelines%20on%20the%20exemption%20to%20the%20fall%20back.pdf?retry=1) and of the interfaces made available to [SEB](https://sebgroup.com) customers for directly accessing their payment accounts online.
 
