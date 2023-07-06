@@ -31,16 +31,16 @@ The time period covered by this report is 2023-04-01 – 2023-06-30.
 ![private_fcis][private_fcis]
 
 
-[corporate_uptime]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_1.jpg
-[corporate_downtime]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_2.jpg
-[corporate_error]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_3.jpg
-[corporate_ais]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_4.jpg
-[corporate_pis]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_5.jpg
-[corporate_fcis]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_6.jpg
-[private_uptime]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_7.jpg
-[private_downtime]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_8.jpg
-[private_error]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_9.jpg
-[private_ais]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_10.jpg
-[private_pis]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_11.jpg
-[private_fcis]: ./archive/2023Q2/SEB_PSD2_KPI_Report_Q2_2023_12.jpg
+[corporate_uptime]: ./SEB_PSD2_KPI_Report_Q2_2023_1.jpg
+[corporate_downtime]: ./SEB_PSD2_KPI_Report_Q2_2023_2.jpg
+[corporate_error]: ./SEB_PSD2_KPI_Report_Q2_2023_3.jpg
+[corporate_ais]: ./SEB_PSD2_KPI_Report_Q2_2023_4.jpg
+[corporate_pis]: ./SEB_PSD2_KPI_Report_Q2_2023_5.jpg
+[corporate_fcis]: ./SEB_PSD2_KPI_Report_Q2_2023_6.jpg
+[private_uptime]: ./SEB_PSD2_KPI_Report_Q2_2023_7.jpg
+[private_downtime]: ./SEB_PSD2_KPI_Report_Q2_2023_8.jpg
+[private_error]: ./SEB_PSD2_KPI_Report_Q2_2023_9.jpg
+[private_ais]: ./SEB_PSD2_KPI_Report_Q2_2023_10.jpg
+[private_pis]: ./SEB_PSD2_KPI_Report_Q2_2023_11.jpg
+[private_fcis]: ./SEB_PSD2_KPI_Report_Q2_2023_12.jpg
 > @ 2023 Skandinaviska Enskilda Banken AB (publ)
