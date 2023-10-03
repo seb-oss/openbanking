@@ -34,9 +34,9 @@ The time period covered by this report is 2023-07-01 – 2022-09-30.
 [private_uptime]: ./archive/2023Q3/private/SEB_CARD_private_uptime.gif
 
 
-[coporate_ais]: ./archive/2023Q3/coporate/SEB_CARD_coporate_ais.gif
-[coporate_downtime]: ./archive/2023Q3/coporate/SEB_CARD_coporate_downtime.gif
-[coporate_error]: ./archive/2023Q3/coporate/SEB_CARD_coporate_error.gif
-[coporate_uptime]: ./archive/2023Q3/coporate/SEB_CARD_coporate_uptime.gif
+[corporate_ais]: ./archive/2023Q3/coporate/SEB_CARD_coporate_ais.gif
+[corporate_downtime]: ./archive/2023Q3/coporate/SEB_CARD_coporate_downtime.gif
+[corporate_error]: ./archive/2023Q3/coporate/SEB_CARD_coporate_error.gif
+[corporate_uptime]: ./archive/2023Q3/coporate/SEB_CARD_coporate_uptime.gif
 
 > @ 2023 SEB Kort Bank AB
