@@ -4,11 +4,34 @@ Publication of daily statistics on the availability and performance of the dedic
 
 The time period covered by this report is 2023-07-01 – 2022-09-30.
 
+### Segment: Private Uptime   
+![private_uptime][private_uptime]
+
+### Segment: Private Downtime   
+![private_downtime][private_downtime]
+
+### Segment: Private Error Response Rate   
+![private_error][private_error]
+
+### Segment: Private AIS Average Response
+![private_ais][private_ais]
+
+### Segment: Corporate Uptime   
+![corporate_uptime][corporate_uptime]
+
+### Segment: Corporate Downtime   
+![corporate_downtime][corporate_downtime]
+
+### Segment: Corporate Error Response Rate   
+![corporate_error][corporate_error]
+
+### Segment: Corporate AIS Average Response
+![corporate_ais][corporate_ais]
+
 [private_ais]: ./archive/2023Q3/private/SEB_CARD_private_ais.gif
 [private_downtime]: ./archive/2023Q3/private/SEB_CARD_private_downtime.gif
 [private_error]: ./archive/2023Q3/private/SEB_CARD_private_error.gif
 [private_uptime]: ./archive/2023Q3/private/SEB_CARD_private_uptime.gif
-
 
 
 [coporate_ais]: ./archive/2023Q3/coporate/SEB_CARD_coporate_ais.gif
