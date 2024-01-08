@@ -28,15 +28,15 @@ The time period covered by this report is 2023-10-01 – 2023-12-31.
 ### Segment: Corporate AIS Average Response
 ![corporate_ais][corporate_ais]
 
-[private_ais]: ./archive/2023Q3/private/SEB_CARD_private_ais.png
-[private_downtime]: ./archive/2023Q3/private/SEB_CARD_private_downtime.png
-[private_error]: ./archive/2023Q3/private/SEB_CARD_private_error.png
-[private_uptime]: ./archive/2023Q3/private/SEB_CARD_private_uptime.png
+[private_ais]: ./archive/2023Q4/private/SEB_CARD_private_ais.png
+[private_downtime]: ./archive/2023Q4/private/SEB_CARD_private_downtime.png
+[private_error]: ./archive/2023Q4/private/SEB_CARD_private_error.png
+[private_uptime]: ./archive/2023Q4/private/SEB_CARD_private_uptime.png
 
 
-[corporate_ais]: ./archive/2023Q3/corporate/SEB_CARD_corporate_ais.png
-[corporate_downtime]: ./archive/2023Q3/corporate/SEB_CARD_corporate_downtime.png
-[corporate_error]: ./archive/2023Q3/corporate/SEB_CARD_corporate_error.png
-[corporate_uptime]: ./archive/2023Q3/corporate/SEB_CARD_corporate_uptime.png
+[corporate_ais]: ./archive/2023Q4/corporate/SEB_CARD_corporate_ais.png
+[corporate_downtime]: ./archive/2023Q4/corporate/SEB_CARD_corporate_downtime.png
+[corporate_error]: ./archive/2023Q4/corporate/SEB_CARD_corporate_error.png
+[corporate_uptime]: ./archive/2023Q4/corporate/SEB_CARD_corporate_uptime.png
 
 > @ 2023 SEB Kort Bank AB
