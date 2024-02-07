@@ -34,7 +34,7 @@ Eurocard | ecno
 Finnair | fano
 GlobeCard | gcno
 Landkreditt | lkno
-Nordic Choice Club | cono
+Strawberry | cono
 SAS | sano
 SEB Selected | ssno
 Volvo kortet | vono
@@ -49,7 +49,7 @@ Eurocard  | ecse
 Finnair | fase
 INGO | jese
 NK | nkse
-Nordic Choice Club | cose
+Strawberry | cose
 Opel | opse
 SAAB | sbse
 SAS | sase
@@ -64,7 +64,7 @@ Wallet | wase
 Brand | Brand ID
 ------------ | -------------
 Eurocard | ccms
-Jyske  | cjydk
-DNB | cdnno
-OP | copfi
-SEB | cssse
+Jyske  | jydk
+DNB | dnno
+OP | opfi
+SEB | ssse
