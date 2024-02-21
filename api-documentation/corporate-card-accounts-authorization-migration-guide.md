@@ -4,7 +4,7 @@ The Corporate authorization flow grants access to the Corporate Card Account API
 
 We have separated the Corporate authorization flow from the private flow to simplify the integration and make it clearer what the different authorization flows grant access to.
 
-Please refer to the [swagger](https://developer.sebgroup.com/products/psd2-branded-card-accounts/corporate-branded-cards-authorization) for detailed information about how to integrate your applications with our APIs.
+Please refer to the [swagger](https://developer.sebgroup.com/products/psd2-branded-card-accounts/corporate-card-accounts-authorization) for detailed information about how to integrate your applications with our APIs.
 
 Following is a brief migration guide for any application using our corporate card account API. Private authorization remains unchanged and will not require any adjustments on your end.
 
