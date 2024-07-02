@@ -11,10 +11,10 @@ The time period covered by this report is 2024-04-01 – 2024-06-30.
 
 
 
-[coporate_ais]: ./archive/2024Q2/coporate/SEB_CARD_coporate_ais.png
-[coporate_downtime]: ./archive/2024Q2/coporate/SEB_CARD_coporate_downtime.png
-[coporate_error]: ./archive/2024Q2/coporate/SEB_CARD_coporate_error.png
-[coporate_uptime]: ./archive/2024Q2/coporate/SEB_CARD_coporate_uptime.png
+[corporate_ais]: ./archive/2024Q2/corporate/SEB_CARD_coporate_ais.png
+[corporate_downtime]: ./archive/2024Q2/corporate/SEB_CARD_coporate_downtime.png
+[corporate_error]: ./archive/2024Q2/corporate/SEB_CARD_coporate_error.png
+[corporate_uptime]: ./archive/2024Q2/corporate/SEB_CARD_coporate_uptime.png
 
 
 > @ 2024 SEB Kort Bank AB
