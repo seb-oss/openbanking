@@ -4,17 +4,17 @@ Publication of daily statistics on the availability and performance of the dedic
 
 The time period covered by this report is 2024-04-01 – 2024-06-30.
 
-[private_ais]: ./archive/2024Q2/private/SEB_CARD_private_ais.gif
-[private_downtime]: ./archive/2024Q2/private/SEB_CARD_private_downtime.gif
-[private_error]: ./archive/2024Q2/private/SEB_CARD_private_error.gif
-[private_uptime]: ./archive/2024Q2/private/SEB_CARD_private_uptime.gif
+[private_ais]: ./archive/2024Q2/private/SEB_CARD_private_ais.png
+[private_downtime]: ./archive/2024Q2/private/SEB_CARD_private_downtime.png
+[private_error]: ./archive/2024Q2/private/SEB_CARD_private_error.png
+[private_uptime]: ./archive/2024Q2/private/SEB_CARD_private_uptime.png
 
 
 
-[coporate_ais]: ./archive/2024Q2/coporate/SEB_CARD_coporate_ais.gif
-[coporate_downtime]: ./archive/2024Q2/coporate/SEB_CARD_coporate_downtime.gif
-[coporate_error]: ./archive/2024Q2/coporate/SEB_CARD_coporate_error.gif
-[coporate_uptime]: ./archive/2024Q2/coporate/SEB_CARD_coporate_uptime.gif
+[coporate_ais]: ./archive/2024Q2/coporate/SEB_CARD_coporate_ais.png
+[coporate_downtime]: ./archive/2024Q2/coporate/SEB_CARD_coporate_downtime.png
+[coporate_error]: ./archive/2024Q2/coporate/SEB_CARD_coporate_error.png
+[coporate_uptime]: ./archive/2024Q2/coporate/SEB_CARD_coporate_uptime.png
 
 
 > @ 2024 SEB Kort Bank AB
