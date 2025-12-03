@@ -1,4 +1,3 @@
-// čia klaida? nes visi path blogi - periodic turi savo periodic-payments path visuose url
 # Private periodic payment initiation changes from V8 to V1 condensed version
 
 ## Description of changes
