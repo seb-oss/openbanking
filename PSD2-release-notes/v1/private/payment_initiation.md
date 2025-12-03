@@ -15,20 +15,20 @@ this changes is acceptable for private flow only.
 <br/>
 
 ### PATHs
-| **V8**                                                                                     | **V1**                                                    | **Comments**                                   |
-|--------------------------------------------------------------------------------------------|-----------------------------------------------------------|------------------------------------------------|
-| `PATCH`<br/>`/payments/mock/resetall`                                                      | `PATCH`<br/>`/payments/mock/resetall`                     | no changes in path                             |
-| `POST`<br/>`/payments/{paymentProduct}`                                                    | `POST`<br/>`/payments/{paymentProduct}`                   | no changes in path                             |
-| `DELETE`<br/>`/payments/{paymentProduct}/{paymentId}`                                      | `DELETE`<br/>`/payments/{paymentProduct}/{paymentId}`     | no changes in path                             |
-| `GET`<br/>`/payments/{paymentProduct}/{paymentId}`                                         | `GET`<br/>`/payments/{paymentProduct}/{paymentId}`        | no changes in path                             |
-| `GET`<br/>`/payments/{paymentProduct}/{paymentId}/authorisations`                          | _removed from PIS_                                        | moved to [signing](https://google.com) product |
-| `POST`<br/>`/payments/{paymentProduct}/{paymentId}/authorisations`                         | _removed from PIS_                                        | moved to [signing](https://google.com) product |
-| `GET`<br/>`/payments/{paymentProduct}/{paymentId}/authorisations/`<br/>`{authorisationId}` | _removed from PIS_                                        | moved to [signing](https://google.com) product |
-| `GET`<br/>`/payments/{paymentProduct}/{paymentId}/status`                                  | `GET`<br/>`/payments/{paymentProduct}/{paymentId}/status` | no changes in path                             |
-| `POST`<br/>`/signing-baskets`                                                              | `POST`<br/>`/signing-baskets`                             | no changes in path                             |
-| `GET`<br/>`/signing-baskets/{basketId}`                                                    | `GET`<br/>`/signing-baskets/{basketId}`                   | no changes in path                             |
-| `POST`<br/>`/signing-baskets/{basketId}/authorisations`                                    | _removed from PIS_                                        | moved to [signing](https://google.com) product |
-| `GET`<br/>`/signing-baskets/{basketId}/authorisations/`<br/>`{authorisationId}`            | _removed from PIS_                                        | moved to [signing](https://google.com) product |
+| **V8**                                                                                     | **V1**                                                    | **Comments**               |
+|--------------------------------------------------------------------------------------------|-----------------------------------------------------------|----------------------------|
+| `PATCH`<br/>`/payments/mock/resetall`                                                      | `PATCH`<br/>`/payments/mock/resetall`                     | no changes in path         |
+| `POST`<br/>`/payments/{paymentProduct}`                                                    | `POST`<br/>`/payments/{paymentProduct}`                   | no changes in path         |
+| `DELETE`<br/>`/payments/{paymentProduct}/{paymentId}`                                      | `DELETE`<br/>`/payments/{paymentProduct}/{paymentId}`     | no changes in path         |
+| `GET`<br/>`/payments/{paymentProduct}/{paymentId}`                                         | `GET`<br/>`/payments/{paymentProduct}/{paymentId}`        | no changes in path         |
+| `GET`<br/>`/payments/{paymentProduct}/{paymentId}/authorisations`                          | _removed from PIS_                                        | moved to signing product   |
+| `POST`<br/>`/payments/{paymentProduct}/{paymentId}/authorisations`                         | _removed from PIS_                                        | moved to signing product   |
+| `GET`<br/>`/payments/{paymentProduct}/{paymentId}/authorisations/`<br/>`{authorisationId}` | _removed from PIS_                                        | moved to signing product   |
+| `GET`<br/>`/payments/{paymentProduct}/{paymentId}/status`                                  | `GET`<br/>`/payments/{paymentProduct}/{paymentId}/status` | no changes in path         |
+| `POST`<br/>`/signing-baskets`                                                              | `POST`<br/>`/signing-baskets`                             | no changes in path         |
+| `GET`<br/>`/signing-baskets/{basketId}`                                                    | `GET`<br/>`/signing-baskets/{basketId}`                   | no changes in path         |
+| `POST`<br/>`/signing-baskets/{basketId}/authorisations`                                    | _removed from PIS_                                        | moved to signing product   |
+| `GET`<br/>`/signing-baskets/{basketId}/authorisations/`<br/>`{authorisationId}`            | _removed from PIS_                                        | moved to signing product   |
 ---
 <br/>
 

@@ -15,15 +15,15 @@
 <br/>
 
 ### PATHs
-| **V8**                                                                                              | **V1**                                                             | **Comments**                                   |
-|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|------------------------------------------------|
-| `POST`<br/>`/periodic-payments/{paymentProduct}`                                                    | `POST`<br/>`/periodic-payments/{paymentProduct}`                   | no changes in path                             |
-| `DELETE`<br/>`/periodic-payments/{paymentProduct}/{paymentId}`                                      | `DELETE`<br/>`/periodic-payments/{paymentProduct}/{paymentId}`     | no changes in path                             |
-| `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}`                                         | `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}`        | no changes in path                             |
-| `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/authorisations`                          | _removed from PIS_                                                 | moved to [signing](https://google.com) product |
-| `POST`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/authorisations`                         | _removed from PIS_                                                 | moved to [signing](https://google.com) product |
-| `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/authorisations/`<br/>`{authorisationId}` | _removed from PIS_                                                 | moved to [signing](https://google.com) product |
-| `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/status`                                  | `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/status` | no changes in path                             |
+| **V8**                                                                                              | **V1**                                                             | **Comments**               |
+|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|----------------------------|
+| `POST`<br/>`/periodic-payments/{paymentProduct}`                                                    | `POST`<br/>`/periodic-payments/{paymentProduct}`                   | no changes in path         |
+| `DELETE`<br/>`/periodic-payments/{paymentProduct}/{paymentId}`                                      | `DELETE`<br/>`/periodic-payments/{paymentProduct}/{paymentId}`     | no changes in path         |
+| `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}`                                         | `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}`        | no changes in path         |
+| `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/authorisations`                          | _removed from PIS_                                                 | moved to signing product   |
+| `POST`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/authorisations`                         | _removed from PIS_                                                 | moved to signing product   |
+| `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/authorisations/`<br/>`{authorisationId}` | _removed from PIS_                                                 | moved to signing product   |
+| `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/status`                                  | `GET`<br/>`/periodic-payments/{paymentProduct}/{paymentId}/status` | no changes in path         |
 <br/>
 
 ---
