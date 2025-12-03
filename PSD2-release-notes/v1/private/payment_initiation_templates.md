@@ -2,7 +2,7 @@
 
 
 ## Description of changes
-Payment initiation (PIS v8) flow was separated to private and corporate, so all corporate templates was moved to [corporate flow](https://google.com).
+Payment initiation (PIS v8) flow was separated to private and corporate, so all corporate templates was moved to corporate flow.
 Response body schema remains the same for available templates in private payments.
 
 ---
