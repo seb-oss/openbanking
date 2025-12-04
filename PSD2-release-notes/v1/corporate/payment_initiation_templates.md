@@ -2,7 +2,7 @@
 
 
 ## Description of changes
-Payment initiation (PIS v8) flow was separated to private and corporate, so all private templates was moved to [private flow](https://developer.sebgroup.com/products/Private-PSD2-payment-initiation).
+Payment initiation (PIS v8) flow was separated to private and corporate, so all private templates was moved to private flow.
 Response body schema remains the same for available templates in corporate payments.
 
 ---
