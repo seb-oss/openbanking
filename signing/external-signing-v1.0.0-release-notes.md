@@ -69,8 +69,11 @@ signing transaction.
 
 #### Additional changes - Error responses
 
+The error responses include the following changes (see examples below):
+
 1. Error responses include the new field `status`.
-2. The field `type` may contain the value `about:blank` in cases where there is no more specific information about the
+2. The value of the field `type` has changed.
+3. The field `type` may contain the value `about:blank` in cases where there is no more specific information about the
    error than what is already communicated by the HTTP status code. The API consumer must be able to handle unknown
    values for the field `type`.
 
@@ -102,5 +105,3 @@ signing transaction.
 ### Known issues
 
 None detected.
-
-
