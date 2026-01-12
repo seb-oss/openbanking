@@ -6,10 +6,10 @@
 <br/>
 
 ### URLs
-| **V7**                                                 | **V1**                                                            |
-|--------------------------------------------------------|-------------------------------------------------------------------|
-| `https://tpp-api.sebgroup.com/tpp/cof/v7/identified2/` | `https://tpp-api.sebgroup.com/tpp/private/cof/v1/identified2/`    |
-| `https://api-sandbox.sebgroup.com/cof/v7/identified2/` | `https://api-sandbox.sebgroup.com/private/cof/v1/identified2/`    |
+| **V7**                                                 | **V1**                                                         |
+|--------------------------------------------------------|----------------------------------------------------------------|
+| `https://tpp-api.sebgroup.com/tpp/cof/v7/identified2/` | `https://tpp-api.sebgroup.com/tpp/cof/private/v1/identified2/` |
+| `https://api-sandbox.sebgroup.com/cof/v7/identified2/` | `https://api-sandbox.sebgroup.com/cof/private/v1/identified2/` |
 ---
 <br/>
 
