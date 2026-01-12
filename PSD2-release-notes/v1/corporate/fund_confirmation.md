@@ -8,8 +8,8 @@
 ### URLs
 | **V7**                                                 | **V1**                                                           |
 |--------------------------------------------------------|------------------------------------------------------------------|
-| `https://tpp-api.sebgroup.com/tpp/cof/v7/identified2/` | `https://tpp-api.sebgroup.com/tpp/corporate/cof/v1/identified2/` |
-| `https://api-sandbox.sebgroup.com/cof/v7/identified2/` | `https://api-sandbox.sebgroup.com/corporate/cof/v1/identified2/` |
+| `https://tpp-api.sebgroup.com/tpp/cof/v7/identified2/` | `https://tpp-api.sebgroup.com/tpp/cof/corporate/v1/identified2/` |
+| `https://api-sandbox.sebgroup.com/cof/v7/identified2/` | `https://api-sandbox.sebgroup.com/cof/corporate/v1/identified2/` |
 ---
 <br/>
 
