@@ -11,8 +11,8 @@ Response body schema remains the same for available templates in corporate payme
 ### URLs
 | **V8**                                                  | **V1**                                                           |
 |---------------------------------------------------------|------------------------------------------------------------------|
-| `https://tpp-api.sebgroup.com/tpp/pis/v8/identified2/`  | `https://tpp-api.sebgroup.com/tpp/corporate/pis/v1/identified2/` |
-| `https://api-sandbox.sebgroup.com/pis/v8/identified2/`  | `https://api-sandbox.sebgroup.com/corporate/pis/v1/identified2/` |
+| `https://tpp-api.sebgroup.com/tpp/pis/v8/identified2/`  | `https://tpp-api.sebgroup.com/tpp/pis/corporate/v1/identified2/` |
+| `https://api-sandbox.sebgroup.com/pis/v8/identified2/`  | `https://api-sandbox.sebgroup.com/pis/corporate/v1/identified2/` |
 ---
 <br/>
 
