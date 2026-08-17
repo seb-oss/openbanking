@@ -6,9 +6,9 @@ For each payment type, availability in production in the new API means that the 
 |------------------------------------|--------------------------------|------------------------------------|----------------------------------------------|----------------------------------------|
 | Instant SEPA credit transfer       | —                              | —                                  | corporate-instant-sepa-credit-transfers      | Production                             |
 | Swedish domestic credit transfer   | se-domestic-credit-transfers   | Production (Deprecated 2026-08-28) | corporate-se-domestic-credit-transfers       | Production                             |
-| Swedish domestic Bankgiro payment  | se-domestic-credit-transfers   | Production                         | corporate-se-domestic-alias-credit-transfers | Sandbox                                |
-| Swedish domestic PlusGiro payment  | se-domestic-credit-transfers   | Production                         | corporate-se-domestic-alias-credit-transfers | Sandbox                                |
-| SEPA credit transfer               | sepa-credit-transfers          | Production                         | corporate-sepa-credit-transfers              | Sandbox                                |
+| Swedish domestic Bankgiro payment  | se-domestic-credit-transfers   | Production (Deprecated 2026-11-26) | corporate-se-domestic-alias-credit-transfers | Production                             |
+| Swedish domestic PlusGiro payment  | se-domestic-credit-transfers   | Production (Deprecated 2026-11-26) | corporate-se-domestic-alias-credit-transfers | Production                             |
+| SEPA credit transfer               | sepa-credit-transfers          | Production (Deprecated 2026-11-26) | corporate-sepa-credit-transfers              | Production                             |
 | Cross-border credit transfer       | cross-border-credit-transfers  | Production                         | TBA                                          | TBA                                    |
 | High-value credit transfer         | high-value-credit-transfers    | Production                         | TBA                                          | TBA                                    |
 | Danish domestic credit transfer    | dk-domestic-credit-transfers   | Production                         | TBA                                          | TBA                                    |
